@@ -1,46 +1,214 @@
-# Getting Started with Create React App
+# Developer Portfolio 2025
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, interactive portfolio website built with React, TypeScript, and Tailwind CSS. Features engaging mini-games, animations, and a sleek dark theme design.
+
+## Features
+
+### Core Components
+- **Hero Section** - Animated landing page with dynamic background
+- **About** - Personal information and background
+- **Services** - Professional services offered
+- **Skills** - Technical skills showcase
+- **Portfolio** - Project gallery and work samples
+- **Contact** - Contact form and information
+- **Footer** - Site links and social media
+
+### Interactive Features
+- **Custom Cursor** - Enhanced cursor with animations
+- **Animated Background** - Dynamic visual effects
+- **Scroll Progress Indicator** - Visual scroll tracking
+- **Voice Commands** - Voice control integration
+- **Confirmation Modals** - User action confirmations
+
+### Mini Games & Tools
+- **Snake Game** - Classic snake game implementation
+- **Typing Test** - Speed typing challenge
+- **Reaction Test** - Reaction time measurement game
+- **JS Engine Visualizer** - JavaScript engine visualization tool
+
+## Tech Stack
+
+### Frontend Framework
+- **React 18.3.1** - UI library
+- **TypeScript 4.9.5** - Type safety
+- **React Router 7.9.1** - Routing and navigation
+
+### Styling
+- **Tailwind CSS 3.4.17** - Utility-first CSS framework
+- **PostCSS 8.5.6** - CSS processing
+- **Autoprefixer 10.4.21** - CSS vendor prefixing
+
+### Animation & UI
+- **Framer Motion 12.23.12** - Animation library
+- **React Icons 4.12.0** - Icon components
+
+### Development Tools
+- **ESLint** - Code linting
+- **Prettier 3.6.2** - Code formatting
+- **React Scripts 5.0.1** - Build tooling
+
+### Testing
+- **Jest** - Testing framework
+- **React Testing Library** - Component testing
+- **Web Vitals** - Performance monitoring
+
+## Installation
+
+### Prerequisites
+- Node.js (v16 or higher)
+- Yarn package manager
+
+### Setup
+
+1. Clone the repository:
+```bash
+git clone [repository-url]
+cd developer-portfolio-2025
+```
+
+2. Install dependencies:
+```bash
+yarn install
+```
+
+3. Create environment variables:
+```bash
+cp .env.example .env
+```
+
+4. Start the development server:
+```bash
+yarn start
+```
+
+The application will open at [http://localhost:3000](http://localhost:3000)
 
 ## Available Scripts
 
-In the project directory, you can run:
+### Development
+- `yarn start` - Run development server
+- `yarn build` - Build for production
+- `yarn test` - Run test suite
+- `yarn eject` - Eject from Create React App (irreversible)
 
-### `npm start`
+### Code Quality
+- `yarn lint` - Check for linting errors
+- `yarn lint:fix` - Auto-fix linting errors
+- `yarn format` - Format code with Prettier
+- `yarn format:check` - Check code formatting
+- `yarn typecheck` - Run TypeScript type checking
+- `yarn check-all` - Run all checks (typecheck, lint, format)
+- `yarn fix-all` - Fix all auto-fixable issues
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Project Structure
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```
+developer-portfolio-2025/
+├── public/              # Static assets
+├── src/
+│   ├── assets/         # Images, fonts, etc.
+│   ├── components/     # React components
+│   │   ├── About.tsx
+│   │   ├── AnimatedBackground.tsx
+│   │   ├── Contact.tsx
+│   │   ├── CustomCursor.tsx
+│   │   ├── Footer.tsx
+│   │   ├── Hero.tsx
+│   │   ├── HomePage.tsx
+│   │   ├── Navigation.tsx
+│   │   ├── Portfolio.tsx
+│   │   ├── Services.tsx
+│   │   ├── Skills.tsx
+│   │   └── ...
+│   ├── pages/          # Page components
+│   │   ├── JSEngineVisualizerPage.tsx
+│   │   ├── ReactionTestPage.tsx
+│   │   ├── SnakeGamePage.tsx
+│   │   └── TypingTestPage.tsx
+│   ├── styles/         # Global styles
+│   ├── utils/          # Utility functions
+│   ├── data/           # Static data
+│   ├── App.tsx         # Main app component
+│   ├── index.tsx       # Entry point
+│   └── index.css       # Global CSS
+├── .eslintrc.json      # ESLint configuration
+├── .prettierrc         # Prettier configuration
+├── tailwind.config.js  # Tailwind CSS configuration
+├── tsconfig.json       # TypeScript configuration
+├── package.json        # Project dependencies
+└── yarn.lock          # Locked dependencies
+```
 
-### `npm test`
+## Configuration Files
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### TypeScript Configuration
+- Strict type checking enabled
+- JSX support for React
+- ES6+ target compilation
 
-### `npm run build`
+### ESLint Configuration
+- React and TypeScript rules
+- Prettier integration for consistent formatting
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Tailwind Configuration
+- Custom theme extensions
+- Responsive design utilities
+- Dark mode support
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Browser Support
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Production
+- Modern browsers (>0.2% market share)
+- Not dead browsers
+- No Opera Mini
 
-### `npm run eject`
+### Development
+- Latest Chrome
+- Latest Firefox
+- Latest Safari
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Deployment
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Build the project for production:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+yarn build
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+The build folder will contain optimized static files ready for deployment to any static hosting service:
+- Netlify
+- Vercel
+- GitHub Pages
+- AWS S3
+- Firebase Hosting
 
-## Learn More
+## Performance Optimization
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Code splitting with React.lazy()
+- Image optimization
+- CSS minification
+- JavaScript bundling and minification
+- Tree shaking for unused code removal
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Contact
+
+For any inquiries or feedback, please reach out through the contact form on the website or open an issue in the repository.
+
+## Acknowledgments
+
+- React team for the amazing framework
+- Tailwind CSS for the utility-first approach
+- Framer Motion for smooth animations
+- All open-source contributors
