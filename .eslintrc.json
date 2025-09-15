@@ -1,0 +1,77 @@
+{
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "prettier"
+  ],
+  "rules": {
+    // Code Quality
+    "no-console": ["warn", { "allow": ["warn", "error"] }],
+    "no-debugger": "error",
+    "no-alert": "warn",
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "prefer-const": "error",
+    "no-var": "error",
+    
+    // React Specific
+    "react/prop-types": "off",
+    "react/jsx-no-duplicate-props": "error",
+    "react/jsx-key": "error",
+    "react/no-array-index-key": "off",
+    "react/no-deprecated": "error",
+    "react/jsx-pascal-case": "error",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "off",
+    
+    // TypeScript Specific
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-non-null-assertion": "warn",
+    
+    // Import/Export
+    "import/no-duplicates": "error",
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    
+    // Code Style (these will work alongside Prettier)
+    "eqeqeq": ["error", "always"],
+    "no-multiple-empty-lines": ["error", { "max": 1 }],
+    "comma-dangle": ["error", "always-multiline"],
+    "quotes": ["error", "single", { "avoidEscape": true }],
+    "semi": ["error", "always"],
+    "jsx-quotes": ["error", "prefer-double"],
+    
+    // Best Practices
+    "no-eval": "error",
+    "no-implied-eval": "error",
+    "no-extend-native": "error",
+    "no-new-wrappers": "error",
+    "no-with": "error",
+    "no-unused-expressions": "error",
+    "no-useless-concat": "error",
+    "no-useless-return": "error",
+    "no-void": "error",
+    "yoda": "error",
+    "prefer-template": "error",
+    "no-throw-literal": "error",
+    "no-loop-func": "error"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "rules": {
+        "no-unused-vars": "off"
+      }
+    }
+  ]
+}
