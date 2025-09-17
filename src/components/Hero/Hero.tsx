@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import React, { useEffect, useMemo, useState } from 'react';
-import { FaGithub, FaLinkedin, FaInstagram, FaDribbble, FaBehance } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaMedium } from 'react-icons/fa';
 
 const Hero: React.FC = () => {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
@@ -8,11 +8,9 @@ const Hero: React.FC = () => {
   const [isDeleting, setIsDeleting] = useState(false);
 
   const socialLinks = [
-    { icon: <FaGithub />, href: 'https://github.com' },
-    { icon: <FaLinkedin />, href: 'https://linkedin.com' },
-    { icon: <FaInstagram />, href: 'https://instagram.com' },
-    { icon: <FaDribbble />, href: 'https://dribbble.com' },
-    { icon: <FaBehance />, href: 'https://behance.net' },
+    { icon: <FaGithub />, href: 'https://github.com/tanishraj' },
+    { icon: <FaLinkedin />, href: 'https://www.linkedin.com/in/itsmetanishraj/' },
+    { icon: <FaMedium />, href: 'https://medium.com/@tanish_rajput' },
   ];
 
   const roles = useMemo(() => {
