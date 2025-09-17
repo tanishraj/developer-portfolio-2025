@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import AnimatedBackground from '../components/AnimatedBackground';
-import CustomCursor from '../components/CustomCursor';
-import SnakeGame from '../components/SnakeGame';
+import AnimatedBackground from '../../components/AnimatedBackground';
+import CustomCursor from '../../components/CustomCursor';
+import SnakeGame from '../../components/SnakeGame';
 
 const SnakeGamePage: React.FC = () => {
   const navigate = useNavigate();

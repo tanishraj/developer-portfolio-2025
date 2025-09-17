@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import React from 'react';
+
 import InfoTooltip from './InfoTooltip';
 
 interface Task {
@@ -66,10 +67,10 @@ const TaskQueues: React.FC<TaskQueuesProps> = ({ microtasks, macrotasks, current
               title="Microtask Queue"
               description="High-priority tasks executed after call stack empties but before rendering."
               details={[
-                "Promise callbacks (.then, .catch, .finally)",
-                "queueMicrotask() callbacks",
-                "MutationObserver callbacks",
-                "Executed until queue is empty"
+                'Promise callbacks (.then, .catch, .finally)',
+                'queueMicrotask() callbacks',
+                'MutationObserver callbacks',
+                'Executed until queue is empty',
               ]}
             />
           </div>
@@ -92,7 +93,7 @@ const TaskQueues: React.FC<TaskQueuesProps> = ({ microtasks, macrotasks, current
                   animate={{ 
                     opacity: 1, 
                     x: 0,
-                    scale: currentlyExecuting === 'microtask' && index === 0 ? 1.05 : 1
+                    scale: currentlyExecuting === 'microtask' && index === 0 ? 1.05 : 1,
                   }}
                   exit={{ opacity: 0, x: 20 }}
                   transition={{ duration: 0.3 }}
@@ -148,10 +149,10 @@ const TaskQueues: React.FC<TaskQueuesProps> = ({ microtasks, macrotasks, current
               title="Macrotask Queue"
               description="Regular priority tasks executed one at a time between microtask queue checks."
               details={[
-                "setTimeout and setInterval callbacks",
-                "I/O operations",
-                "setImmediate (Node.js)",
-                "UI events and user interactions"
+                'setTimeout and setInterval callbacks',
+                'I/O operations',
+                'setImmediate (Node.js)',
+                'UI events and user interactions',
               ]}
             />
           </div>
@@ -174,7 +175,7 @@ const TaskQueues: React.FC<TaskQueuesProps> = ({ microtasks, macrotasks, current
                   animate={{ 
                     opacity: 1, 
                     x: 0,
-                    scale: currentlyExecuting === 'macrotask' && index === 0 ? 1.05 : 1
+                    scale: currentlyExecuting === 'macrotask' && index === 0 ? 1.05 : 1,
                   }}
                   exit={{ opacity: 0, x: 20 }}
                   transition={{ duration: 0.3 }}

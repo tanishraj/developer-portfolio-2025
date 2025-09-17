@@ -160,13 +160,13 @@ export function parseAndExecute(code: string): ExecutionStep[] {
   const lines = code.split('\n');
   
   // Global state
-  let globalVariables: Variable[] = [];
-  let functions: Record<string, any> = {};
-  let heap: Record<string, HeapObject> = {};
-  let callStack: StackFrame[] = [{ name: 'Global', type: 'global', variables: globalVariables }];
-  let consoleOutput: string[] = [];
-  let microtaskQueue: Task[] = [];
-  let macrotaskQueue: Task[] = [];
+  const globalVariables: Variable[] = [];
+  const functions: Record<string, any> = {};
+  const heap: Record<string, HeapObject> = {};
+  const callStack: StackFrame[] = [{ name: 'Global', type: 'global', variables: globalVariables }];
+  const consoleOutput: string[] = [];
+  const microtaskQueue: Task[] = [];
+  const macrotaskQueue: Task[] = [];
   let taskIdCounter = 0;
   
   const generateTaskId = () => `task_${++taskIdCounter}`;
@@ -175,7 +175,7 @@ export function parseAndExecute(code: string): ExecutionStep[] {
   const createStep = (
     operation: string,
     line: number,
-    phase: ExecutionStep['eventLoopPhase'] = 'call-stack'
+    phase: ExecutionStep['eventLoopPhase'] = 'call-stack',
   ): ExecutionStep => ({
     operation,
     currentLine: line,
@@ -183,13 +183,13 @@ export function parseAndExecute(code: string): ExecutionStep[] {
     executionContext: {
       scope: callStack[callStack.length - 1]?.name || 'Global',
       thisBinding: callStack[callStack.length - 1]?.type === 'global' ? 'window' : 'undefined',
-      variables: [...(callStack[callStack.length - 1]?.variables || [])]
+      variables: [...(callStack[callStack.length - 1]?.variables || [])],
     },
     heap: { ...heap },
     console: [...consoleOutput],
     eventLoopPhase: phase,
     microtaskQueue: [...microtaskQueue],
-    macrotaskQueue: [...macrotaskQueue]
+    macrotaskQueue: [...macrotaskQueue],
   });
   
   // Parse and execute line by line
@@ -222,13 +222,13 @@ export function parseAndExecute(code: string): ExecutionStep[] {
             id: heapId,
             type: type as 'object' | 'array',
             value,
-            references: []
+            references: [],
           };
         }
         
         steps.push(createStep(
           `Declaring ${varName} = ${JSON.stringify(value)}`,
-          i + 1
+          i + 1,
         ));
       }
     }
@@ -241,7 +241,7 @@ export function parseAndExecute(code: string): ExecutionStep[] {
         const paramList = params.split(',').map(p => p.trim()).filter(p => p);
         
         // Find function body
-        let bodyLines: string[] = [];
+        const bodyLines: string[] = [];
         let depth = 0;
         let j = i + 1;
         
@@ -261,7 +261,7 @@ export function parseAndExecute(code: string): ExecutionStep[] {
         functions[funcName] = {
           name: funcName,
           params: paramList,
-          body: bodyLines
+          body: bodyLines,
         };
         
         // Add function to heap
@@ -270,12 +270,12 @@ export function parseAndExecute(code: string): ExecutionStep[] {
           id: heapId,
           type: 'function',
           value: { name: funcName, params: paramList },
-          references: []
+          references: [],
         };
         
         steps.push(createStep(
           `Defining function ${funcName}(${paramList.join(', ')})`,
-          i + 1
+          i + 1,
         ));
         
         i = j; // Skip to end of function
@@ -291,7 +291,7 @@ export function parseAndExecute(code: string): ExecutionStep[] {
         
         steps.push(createStep(
           `Defining arrow function ${funcName}(${paramList.join(', ')})`,
-          i + 1
+          i + 1,
         ));
       }
     }
@@ -311,7 +311,7 @@ export function parseAndExecute(code: string): ExecutionStep[] {
               return evaluateExpression(arg.trim(), currentContext.variables || []);
             });
             const output = logArgs.map(arg => 
-              typeof arg === 'object' ? JSON.stringify(arg) : String(arg)
+              typeof arg === 'object' ? JSON.stringify(arg) : String(arg),
             ).join(' ');
             
             consoleOutput.push(output);
@@ -327,7 +327,7 @@ export function parseAndExecute(code: string): ExecutionStep[] {
               type: 'timeout',
               name: 'setTimeout',
               callback: callback.trim(),
-              delay: parseInt(delay)
+              delay: parseInt(delay),
             };
             macrotaskQueue.push(task);
             steps.push(createStep(`Scheduling setTimeout (${delay}ms)`, i + 1));
@@ -342,18 +342,18 @@ export function parseAndExecute(code: string): ExecutionStep[] {
             variables: func.params.map((p: string, idx: number) => ({
               name: p,
               value: evaluateExpression(argList[idx] || 'undefined', currentContext.variables || []),
-              type: getVariableType(evaluateExpression(argList[idx] || 'undefined', currentContext.variables || []))
-            }))
+              type: getVariableType(evaluateExpression(argList[idx] || 'undefined', currentContext.variables || [])),
+            })),
           };
           
           callStack.push(funcFrame);
           steps.push(createStep(`Calling ${funcName}(${argList.join(', ')})`, i + 1));
           
           // Execute function body
-          for (const bodyLine of func.body) {
-            // Process function body lines...
-            // This would be similar to the main loop but scoped to the function
-          }
+          // for (const bodyLine of func.body) {
+          //   // Process function body lines...
+          //   // This would be similar to the main loop but scoped to the function
+          // }
           
           callStack.pop();
           steps.push(createStep(`Returning from ${funcName}`, i + 1));
@@ -400,7 +400,7 @@ export function parseAndExecute(code: string): ExecutionStep[] {
             id: generateTaskId(),
             type: 'promise',
             name: 'Promise.then',
-            callback: 'promise callback'
+            callback: 'promise callback',
           };
           microtaskQueue.push(task);
           steps.push(createStep('Adding Promise.then to microtask queue', i + 2));

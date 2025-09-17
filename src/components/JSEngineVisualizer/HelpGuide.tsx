@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState } from 'react';
 
 const HelpGuide: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);

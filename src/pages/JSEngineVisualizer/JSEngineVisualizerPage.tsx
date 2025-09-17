@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import JSEngineVisualizer from '../components/JSEngineVisualizer';
+import JSEngineVisualizer from '../../components/JSEngineVisualizer';
 
 const JSEngineVisualizerPage: React.FC = () => {
   useEffect(() => {

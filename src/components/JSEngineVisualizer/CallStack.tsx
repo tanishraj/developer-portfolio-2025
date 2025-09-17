@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import React from 'react';
+
 import InfoTooltip from './InfoTooltip';
 
 interface StackFrame {
@@ -34,10 +35,10 @@ const CallStack: React.FC<CallStackProps> = ({ stack }) => {
           title="Call Stack"
           description="The call stack tracks function execution order using LIFO (Last In, First Out)."
           details={[
-            "Functions are pushed when called",
-            "Functions are popped when they return", 
-            "Stack overflow occurs when too many functions are nested",
-            "Global execution context is always at the bottom"
+            'Functions are pushed when called',
+            'Functions are popped when they return', 
+            'Stack overflow occurs when too many functions are nested',
+            'Global execution context is always at the bottom',
           ]}
         />
       </div>

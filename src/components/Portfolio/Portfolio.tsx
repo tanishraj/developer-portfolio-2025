@@ -137,18 +137,13 @@ const Portfolio: React.FC = () => {
     },
   ];
 
-  const filteredProjects =
-    filter === 'all' ? projects : projects.filter((project) => project.category === filter);
+  const filteredProjects = filter === 'all' 
+    ? projects 
+    : projects.filter(project => project.category === filter);
 
   return (
-    <section id="portfolio" className="py-20 px-4 relative">
-      {/* Background decoration */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -left-48 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 -right-48 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
-      </div>
-
-      <div className="max-w-7xl mx-auto relative z-10">
+    <section id="portfolio" className="py-20 px-4">
+      <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -162,131 +157,140 @@ const Portfolio: React.FC = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="inline-block px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-full text-sm text-blue-400 mb-6"
+            className="inline-block px-4 py-2 bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-full text-sm text-purple-400 mb-6"
           >
             Portfolio
           </motion.span>
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
-            My Recent{' '}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            Featured{' '}
+            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
               Projects
             </span>
           </h2>
           <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-            Here are some of my recent works showcasing my expertise in frontend development and
-            design
+            Explore my latest work and creative solutions
           </p>
         </motion.div>
 
-        {/* Filter Buttons */}
+        {/* Filter Tabs */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
+          className="flex flex-wrap justify-center gap-4 mb-12"
         >
-          {categories.map((category) => (
-            <motion.button
+          {categories.map(category => (
+            <button
               key={category.id}
               onClick={() => setFilter(category.id)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+              className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
                 filter === category.id
-                  ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg shadow-blue-500/25'
-                  : 'bg-gray-800 text-gray-400 hover:text-white hover:bg-gray-700'
+                  ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg shadow-purple-500/25'
+                  : 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white'
               }`}
             >
-              <span className="flex items-center gap-2">
-                {category.label}
-                <span className="text-xs opacity-70">({category.count})</span>
+              {category.label}
+              <span className="ml-2 px-2 py-1 text-xs bg-white/10 rounded-full">
+                {category.count}
               </span>
-            </motion.button>
+            </button>
           ))}
         </motion.div>
 
         {/* Projects Grid */}
-        <motion.div layout className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <motion.div 
+          layout
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+        >
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, index) => (
               <motion.div
                 key={project.id}
                 layout
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
+                exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
                 whileHover={{ y: -10 }}
-                onHoverStart={() => setHoveredProject(project.id)}
-                onHoverEnd={() => setHoveredProject(null)}
-                className="group relative bg-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-800 hover:border-gray-700 transition-all duration-300"
+                onMouseEnter={() => setHoveredProject(project.id)}
+                onMouseLeave={() => setHoveredProject(null)}
+                className="group relative bg-gray-800/50 rounded-2xl overflow-hidden border border-gray-700 hover:border-purple-500/50 transition-all duration-300"
               >
                 {/* Featured Badge */}
                 {project.featured && (
                   <div className="absolute top-4 right-4 z-10">
-                    <span className="px-3 py-1 bg-gradient-to-r from-yellow-500 to-orange-500 text-white text-xs font-semibold rounded-full">
+                    <span className="px-3 py-1 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-semibold rounded-full">
                       Featured
                     </span>
                   </div>
                 )}
 
                 {/* Project Image */}
-                <div className="relative h-48 overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
+                <div className="relative h-48 overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                   />
-
-                  {/* Overlay with links */}
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: hoveredProject === project.id ? 1 : 0 }}
-                    className="absolute inset-0 bg-black/70 flex items-center justify-center gap-4"
-                  >
-                    <motion.a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="p-3 bg-gray-800 rounded-full hover:bg-gray-700 transition-colors"
-                    >
-                      <FaGithub className="w-5 h-5" />
-                    </motion.a>
-                    <motion.a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className="p-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full hover:shadow-lg hover:shadow-blue-500/25 transition-all"
-                    >
-                      <FaExternalLinkAlt className="w-5 h-5" />
-                    </motion.a>
-                  </motion.div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-60" />
+                  
+                  {/* Hover Overlay with Links */}
+                  <AnimatePresence>
+                    {hoveredProject === project.id && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="absolute inset-0 bg-black/70 flex items-center justify-center gap-4"
+                      >
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-3 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-colors"
+                        >
+                          <FaGithub className="w-5 h-5 text-white" />
+                        </a>
+                        <a
+                          href={project.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-3 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-colors"
+                        >
+                          <FaExternalLinkAlt className="w-5 h-5 text-white" />
+                        </a>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
 
-                {/* Project Info */}
+                {/* Project Details */}
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
+                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-gray-400 text-sm mb-4 line-clamp-2">{project.description}</p>
+                  <p className="text-gray-400 text-sm mb-4 line-clamp-2">
+                    {project.description}
+                  </p>
 
                   {/* Technologies */}
-                  <div className="flex flex-wrap gap-2">
-                    {project.technologies.map((tech, i) => (
+                  <div className="flex items-center gap-3">
+                    {project.technologies.map((tech, techIndex) => (
                       <motion.div
-                        key={i}
+                        key={techIndex}
                         initial={{ opacity: 0, scale: 0 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.1 + i * 0.05 }}
-                        className="flex items-center gap-1 px-3 py-1 bg-gray-800 rounded-full text-xs text-gray-400"
+                        transition={{ delay: 0.1 + techIndex * 0.05 }}
+                        className="relative group/tech"
                       >
-                        <span className="text-blue-400">{tech.icon}</span>
-                        <span>{tech.name}</span>
+                        <div className="text-gray-500 hover:text-white transition-colors cursor-pointer">
+                          {tech.icon}
+                        </div>
+                        {/* Tooltip */}
+                        <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-gray-700 text-white text-xs rounded opacity-0 group-hover/tech:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+                          {tech.name}
+                        </div>
                       </motion.div>
                     ))}
                   </div>
@@ -298,19 +302,15 @@ const Portfolio: React.FC = () => {
 
         {/* View More Button */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
           viewport={{ once: true }}
           className="text-center mt-12"
         >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
-          >
-            View All Projects →
-          </motion.button>
+          <button className="px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300">
+            View All Projects
+          </button>
         </motion.div>
       </div>
     </section>

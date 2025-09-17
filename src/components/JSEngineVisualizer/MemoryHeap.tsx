@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import React from 'react';
+
 import InfoTooltip from './InfoTooltip';
 
 interface HeapObject {
@@ -86,10 +87,10 @@ const MemoryHeap: React.FC<MemoryHeapProps> = ({ heap }) => {
             title="Memory Heap"
             description="The heap stores objects, arrays, and functions. JavaScript uses automatic garbage collection."
             details={[
-              "Objects are stored by reference",
-              "Primitive values stored in stack", 
-              "Garbage collection removes unreferenced objects",
-              "Memory leaks from retained references"
+              'Objects are stored by reference',
+              'Primitive values stored in stack', 
+              'Garbage collection removes unreferenced objects',
+              'Memory leaks from retained references',
             ]}
           />
         </div>

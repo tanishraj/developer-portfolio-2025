@@ -1,15 +1,15 @@
-import About from './About';
-import AnimatedBackground from './AnimatedBackground';
-import Contact from './Contact';
-import CustomCursor from './CustomCursor';
-import Footer from './Footer';
-import GameButton from './GameButton';
-import Hero from './Hero';
-import Navigation from './Navigation';
-import Portfolio from './Portfolio';
-import Services from './Services';
-import Skills from './Skills';
-import VoiceCommand from './VoiceCommand';
+import About from '../About';
+import AnimatedBackground from '../AnimatedBackground';
+import Contact from '../Contact';
+import CustomCursor from '../CustomCursor';
+import Footer from '../Footer';
+import GameButton from '../GameButton';
+import Hero from '../Hero';
+import Navigation from '../Navigation';
+import Portfolio from '../Portfolio';
+import Services from '../Services';
+import Skills from '../Skills';
+import VoiceCommand from '../VoiceCommand';
 
 function HomePage() {
   return (

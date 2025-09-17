@@ -49,12 +49,12 @@ export function parseAndExecute(code: string): ExecutionStep[] {
   const generateHeapId = () => `heap_${heapCounter++}`;
   const generateTaskId = () => `task_${taskCounter++}`;
   
-  // Helper to get type
-  const getType = (value: any): string => {
-    if (value === null) return 'null';
-    if (Array.isArray(value)) return 'array';
-    return typeof value;
-  };
+  // Helper to get type - commented out as it's not currently used
+  // const getType = (value: any): string => {
+  //   if (value === null) return 'null';
+  //   if (Array.isArray(value)) return 'array';
+  //   return typeof value;
+  // };
   
   // Helper to create step with default values
   const createStep = (
@@ -64,7 +64,7 @@ export function parseAndExecute(code: string): ExecutionStep[] {
     executionContext: any,
     heap: any,
     console: string[],
-    phase: 'idle' | 'call-stack' | 'microtask' | 'macrotask' | 'render' = 'call-stack'
+    phase: 'idle' | 'call-stack' | 'microtask' | 'macrotask' | 'render' = 'call-stack',
   ): ExecutionStep => ({
     operation,
     currentLine,
@@ -74,7 +74,7 @@ export function parseAndExecute(code: string): ExecutionStep[] {
     console,
     microtaskQueue: [...microtaskQueue],
     macrotaskQueue: [...macrotaskQueue],
-    eventLoopPhase: phase
+    eventLoopPhase: phase,
   });
 
   // Parse the code into meaningful lines
@@ -106,15 +106,15 @@ export function parseAndExecute(code: string): ExecutionStep[] {
         line: trimmed,
         lineNumber: index + 1,
         type,
-        indent
+        indent,
       });
     }
   });
 
   // Simulation state
-  let currentHeap: Record<string, any> = {};
-  let globalVariables: Array<any> = [];
-  let callStack: Array<{
+  const currentHeap: Record<string, any> = {};
+  const globalVariables: Array<any> = [];
+  const callStack: Array<{
     name: string;
     type: 'function' | 'global' | 'anonymous';
     line?: number;
@@ -137,11 +137,11 @@ export function parseAndExecute(code: string): ExecutionStep[] {
     {
       scope: 'Global',
       thisBinding: 'window',
-      variables: []
+      variables: [],
     },
     {},
     [],
-    'idle'
+    'idle',
   ));
 
   // First pass - collect function declarations
@@ -195,7 +195,7 @@ export function parseAndExecute(code: string): ExecutionStep[] {
           name: funcName,
           params,
           body: funcBody,
-          startLine: item.lineNumber
+          startLine: item.lineNumber,
         };
 
         // Add to heap
@@ -204,13 +204,13 @@ export function parseAndExecute(code: string): ExecutionStep[] {
           id: funcId,
           type: 'function',
           value: { name: funcName, params },
-          references: []
+          references: [],
         };
         
         globalVariables.push({
           name: funcName,
           value: `function ${funcName}`,
-          type: 'function'
+          type: 'function',
         });
         
         steps.push(createStep(
@@ -220,11 +220,11 @@ export function parseAndExecute(code: string): ExecutionStep[] {
           {
             scope: 'Global',
             thisBinding: 'window',
-            variables: [...globalVariables]
+            variables: [...globalVariables],
           },
           { ...currentHeap },
           [...consoleOutput],
-          'call-stack'
+          'call-stack',
         ));
       }
     }
@@ -262,25 +262,25 @@ export function parseAndExecute(code: string): ExecutionStep[] {
         const task: Task = {
           id: generateTaskId(),
           type: 'timeout',
-          name: `setTimeout`,
+          name: 'setTimeout',
           callback: callback.trim(),
-          delay
+          delay,
         };
         
         macrotaskQueue.push(task);
         
         steps.push(createStep(
-          `Adding setTimeout to macrotask queue`,
+          'Adding setTimeout to macrotask queue',
           item.lineNumber,
           [...callStack],
           {
             scope: 'Global',
             thisBinding: 'window',
-            variables: [...globalVariables]
+            variables: [...globalVariables],
           },
           { ...currentHeap },
           [...consoleOutput],
-          'call-stack'
+          'call-stack',
         ));
       }
     }
@@ -298,7 +298,7 @@ export function parseAndExecute(code: string): ExecutionStep[] {
               id: generateTaskId(),
               type: 'promise',
               name: 'Promise.then',
-              callback: thenMatch[1].trim()
+              callback: thenMatch[1].trim(),
             };
             
             microtaskQueue.push(task);
@@ -307,17 +307,17 @@ export function parseAndExecute(code: string): ExecutionStep[] {
         }
         
         steps.push(createStep(
-          `Adding Promise callbacks to microtask queue`,
+          'Adding Promise callbacks to microtask queue',
           item.lineNumber,
           [...callStack],
           {
             scope: 'Global',
             thisBinding: 'window',
-            variables: [...globalVariables]
+            variables: [...globalVariables],
           },
           { ...currentHeap },
           [...consoleOutput],
-          'call-stack'
+          'call-stack',
         ));
       }
     }
@@ -346,8 +346,8 @@ export function parseAndExecute(code: string): ExecutionStep[] {
             variables: func.params.map((param, idx) => ({
               name: param,
               value: args[idx] || 'undefined',
-              type: 'string'
-            }))
+              type: 'string',
+            })),
           };
           
           callStack.push(funcContext);
@@ -359,11 +359,11 @@ export function parseAndExecute(code: string): ExecutionStep[] {
             {
               scope: funcName,
               thisBinding: 'undefined',
-              variables: funcContext.variables
+              variables: funcContext.variables,
             },
             { ...currentHeap },
             [...consoleOutput],
-            'call-stack'
+            'call-stack',
           ));
           
           // Execute function body
@@ -405,7 +405,7 @@ export function parseAndExecute(code: string): ExecutionStep[] {
                 funcContext.variables.push({
                   name: localVarName,
                   value: evaluatedValue,
-                  type: 'string'
+                  type: 'string',
                 });
                 
                 steps.push(createStep(
@@ -415,11 +415,11 @@ export function parseAndExecute(code: string): ExecutionStep[] {
                   {
                     scope: funcName,
                     thisBinding: 'undefined',
-                    variables: funcContext.variables
+                    variables: funcContext.variables,
                   },
                   { ...currentHeap },
                   [...consoleOutput],
-                  'call-stack'
+                  'call-stack',
                 ));
               }
             } else if (bodyItem.type === 'console_log') {
@@ -453,11 +453,11 @@ export function parseAndExecute(code: string): ExecutionStep[] {
                   {
                     scope: funcName,
                     thisBinding: 'undefined',
-                    variables: funcContext.variables
+                    variables: funcContext.variables,
                   },
                   { ...currentHeap },
                   [...consoleOutput],
-                  'call-stack'
+                  'call-stack',
                 ));
               }
             } else if (bodyItem.type === 'return') {
@@ -480,11 +480,11 @@ export function parseAndExecute(code: string): ExecutionStep[] {
                   {
                     scope: funcName,
                     thisBinding: 'undefined',
-                    variables: funcContext.variables
+                    variables: funcContext.variables,
                   },
                   { ...currentHeap },
                   [...consoleOutput],
-                  'call-stack'
+                  'call-stack',
                 ));
               }
             }
@@ -497,7 +497,7 @@ export function parseAndExecute(code: string): ExecutionStep[] {
           globalVariables.push({
             name: varName,
             value: functionReturnValue,
-            type: 'string'
+            type: 'string',
           });
           
           steps.push(createStep(
@@ -507,18 +507,18 @@ export function parseAndExecute(code: string): ExecutionStep[] {
             {
               scope: 'Global',
               thisBinding: 'window',
-              variables: [...globalVariables]
+              variables: [...globalVariables],
             },
             { ...currentHeap },
             [...consoleOutput],
-            'call-stack'
+            'call-stack',
           ));
         } else {
           // Simple variable assignment
           globalVariables.push({
             name: varName,
             value: varValue.replace(/["']/g, ''),
-            type: 'string'
+            type: 'string',
           });
           
           steps.push(createStep(
@@ -528,11 +528,11 @@ export function parseAndExecute(code: string): ExecutionStep[] {
             {
               scope: 'Global',
               thisBinding: 'window',
-              variables: [...globalVariables]
+              variables: [...globalVariables],
             },
             { ...currentHeap },
             [...consoleOutput],
-            'call-stack'
+            'call-stack',
           ));
         }
       }
@@ -571,11 +571,11 @@ export function parseAndExecute(code: string): ExecutionStep[] {
           {
             scope: 'Global',
             thisBinding: 'window',
-            variables: [...globalVariables]
+            variables: [...globalVariables],
           },
           { ...currentHeap },
           [...consoleOutput],
-          'call-stack'
+          'call-stack',
         ));
       }
     }
@@ -592,11 +592,11 @@ export function parseAndExecute(code: string): ExecutionStep[] {
       {
         scope: 'Global',
         thisBinding: 'window',
-        variables: globalVariables
+        variables: globalVariables,
       },
       currentHeap,
       consoleOutput,
-      'microtask'
+      'microtask',
     ));
     
     while (microtaskQueue.length > 0) {
@@ -614,11 +614,11 @@ export function parseAndExecute(code: string): ExecutionStep[] {
             {
               scope: 'Global',
               thisBinding: 'window',
-              variables: globalVariables
+              variables: globalVariables,
             },
             currentHeap,
             [...consoleOutput],
-            'microtask'
+            'microtask',
           ));
         }
       }
@@ -634,11 +634,11 @@ export function parseAndExecute(code: string): ExecutionStep[] {
       {
         scope: 'Global',
         thisBinding: 'window',
-        variables: globalVariables
+        variables: globalVariables,
       },
       currentHeap,
       consoleOutput,
-      'macrotask'
+      'macrotask',
     ));
     
     while (macrotaskQueue.length > 0) {
@@ -656,11 +656,11 @@ export function parseAndExecute(code: string): ExecutionStep[] {
             {
               scope: 'Global',
               thisBinding: 'window',
-              variables: globalVariables
+              variables: globalVariables,
             },
             currentHeap,
             [...consoleOutput],
-            'macrotask'
+            'macrotask',
           ));
         }
       }
@@ -675,11 +675,11 @@ export function parseAndExecute(code: string): ExecutionStep[] {
     {
       scope: 'Global',
       thisBinding: 'window',
-      variables: globalVariables
+      variables: globalVariables,
     },
     currentHeap,
     consoleOutput,
-    'idle'
+    'idle',
   ));
   
   return steps;

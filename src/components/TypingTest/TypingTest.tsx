@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 
-import ConfirmationModal from './ConfirmationModal';
+import ConfirmationModal from '../ConfirmationModal';
 
 interface TestResult {
   wpm: number;

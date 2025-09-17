@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import React from 'react';
+
 import InfoTooltip from './InfoTooltip';
 
 interface Variable {
@@ -57,10 +58,10 @@ const ExecutionContext: React.FC<ExecutionContextProps> = ({ context }) => {
           title="Execution Context"
           description="Each function creates its own execution context with variables, scope chain, and 'this' binding."
           details={[
-            "Variables: Local variables and parameters",
-            "Scope Chain: Access to outer scopes",
+            'Variables: Local variables and parameters',
+            'Scope Chain: Access to outer scopes',
             "This Binding: What 'this' refers to",
-            "Created when function is invoked"
+            'Created when function is invoked',
           ]}
         />
       </div>

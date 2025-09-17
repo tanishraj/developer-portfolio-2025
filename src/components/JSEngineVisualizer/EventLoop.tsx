@@ -1,5 +1,6 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import React from 'react';
+
 import InfoTooltip from './InfoTooltip';
 
 interface EventLoopProps {
@@ -33,11 +34,11 @@ const EventLoop: React.FC<EventLoopProps> = ({ isActive, currentPhase }) => {
           title="Event Loop"
           description="The event loop coordinates asynchronous operations, ensuring JavaScript remains single-threaded but non-blocking."
           details={[
-            "1. Execute call stack until empty",
-            "2. Process all microtasks (Promises)",
-            "3. Render if needed",
-            "4. Process one macrotask (setTimeout, I/O)",
-            "Repeat the cycle continuously"
+            '1. Execute call stack until empty',
+            '2. Process all microtasks (Promises)',
+            '3. Render if needed',
+            '4. Process one macrotask (setTimeout, I/O)',
+            'Repeat the cycle continuously',
           ]}
         />
       </div>
