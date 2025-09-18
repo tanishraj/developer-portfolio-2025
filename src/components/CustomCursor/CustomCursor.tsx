@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 
-const CustomCursor: React.FC = () => {
+export const CustomCursor: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [cursorVariant] = useState('default');
   const [isLargeScreen, setIsLargeScreen] = useState(false);
@@ -75,4 +75,3 @@ const CustomCursor: React.FC = () => {
   );
 };
 
-export default CustomCursor;

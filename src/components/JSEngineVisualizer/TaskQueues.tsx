@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import React from 'react';
 
-import InfoTooltip from './InfoTooltip';
+import { InfoTooltip } from './InfoTooltip';
 
 interface Task {
   id: string;
@@ -17,7 +17,7 @@ interface TaskQueuesProps {
   currentlyExecuting?: 'microtask' | 'macrotask' | null;
 }
 
-const TaskQueues: React.FC<TaskQueuesProps> = ({ microtasks, macrotasks, currentlyExecuting }) => {
+export const TaskQueues: React.FC<TaskQueuesProps> = ({ microtasks, macrotasks, currentlyExecuting }) => {
   const getTaskIcon = (type: string) => {
     switch (type) {
       case 'promise':
@@ -230,4 +230,3 @@ const TaskQueues: React.FC<TaskQueuesProps> = ({ microtasks, macrotasks, current
   );
 };
 
-export default TaskQueues;

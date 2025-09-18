@@ -1,14 +1,14 @@
 import { motion } from 'framer-motion';
 import React from 'react';
 
-import InfoTooltip from './InfoTooltip';
+import { InfoTooltip } from './InfoTooltip';
 
 interface EventLoopProps {
   isActive: boolean;
   currentPhase: 'idle' | 'call-stack' | 'microtask' | 'macrotask' | 'render';
 }
 
-const EventLoop: React.FC<EventLoopProps> = ({ isActive, currentPhase }) => {
+export const EventLoop: React.FC<EventLoopProps> = ({ isActive, currentPhase }) => {
   const phases = [
     { id: 'call-stack', label: 'Call Stack', color: 'from-purple-500 to-purple-600' },
     { id: 'microtask', label: 'Microtasks', color: 'from-blue-500 to-blue-600' },
@@ -148,4 +148,3 @@ const EventLoop: React.FC<EventLoopProps> = ({ isActive, currentPhase }) => {
   );
 };
 
-export default EventLoop;

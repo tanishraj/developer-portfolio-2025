@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import React, { useEffect, useState, useRef } from 'react';
 
-const ScrollProgress: React.FC = () => {
+export const ScrollProgress: React.FC = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -276,4 +276,3 @@ const ScrollProgress: React.FC = () => {
   );
 };
 
-export default ScrollProgress;

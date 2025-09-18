@@ -1,1 +1,1 @@
-export { default } from './TypingTest';
+export { TypingTest } from './TypingTest';

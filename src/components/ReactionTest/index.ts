@@ -1,1 +1,1 @@
-export { default } from './ReactionTest';
+export { ReactionTest } from './ReactionTest';

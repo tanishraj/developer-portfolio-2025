@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import React from 'react';
 
-const About: React.FC = () => {
+export const About: React.FC = () => {
   const skills = [
     {
       id: 1,
@@ -151,4 +151,3 @@ const About: React.FC = () => {
   );
 };
 
-export default About;

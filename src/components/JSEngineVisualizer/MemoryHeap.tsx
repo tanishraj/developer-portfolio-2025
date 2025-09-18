@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import React from 'react';
 
-import InfoTooltip from './InfoTooltip';
+import { InfoTooltip } from './InfoTooltip';
 
 interface HeapObject {
   id: string;
@@ -14,7 +14,7 @@ interface MemoryHeapProps {
   heap: Record<string, HeapObject>;
 }
 
-const MemoryHeap: React.FC<MemoryHeapProps> = ({ heap }) => {
+export const MemoryHeap: React.FC<MemoryHeapProps> = ({ heap }) => {
   const getObjectColor = (type: string) => {
     switch (type) {
       case 'object':
@@ -172,4 +172,3 @@ const MemoryHeap: React.FC<MemoryHeapProps> = ({ heap }) => {
   );
 };
 
-export default MemoryHeap;

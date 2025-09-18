@@ -1,16 +1,16 @@
 import { motion } from 'framer-motion';
 import React, { useState, useCallback } from 'react';
 
-import CallStack from './CallStack';
-import CodeEditor from './CodeEditor';
-import EventLoop from './EventLoop';
-import ExecutionContext from './ExecutionContext';
-import HelpGuide from './HelpGuide';
+import { CallStack } from './CallStack';
+import { CodeEditor } from './CodeEditor';
+import { EventLoop } from './EventLoop';
+import { ExecutionContext } from './ExecutionContext';
+import { HelpGuide } from './HelpGuide';
 import { ExecutionStep, parseAndExecute } from './jsEngine';
-import MemoryHeap from './MemoryHeap';
-import TaskQueues from './TaskQueues';
+import { MemoryHeap } from './MemoryHeap';
+import { TaskQueues } from './TaskQueues';
 
-const JSEngineVisualizer: React.FC = () => {
+export const JSEngineVisualizer: React.FC = () => {
   const [code, setCode] = useState(`// Try these examples or write your own!
 function greet(name) {
   const message = "Hello, " + name;
@@ -424,4 +424,3 @@ greetFunc(); // 'this' is undefined`)}
   );
 };
 
-export default JSEngineVisualizer;

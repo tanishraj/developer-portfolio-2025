@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import React from 'react';
 
-import InfoTooltip from './InfoTooltip';
+import { InfoTooltip } from './InfoTooltip';
 
 interface Variable {
   name: string;
@@ -17,7 +17,7 @@ interface ExecutionContextProps {
   };
 }
 
-const ExecutionContext: React.FC<ExecutionContextProps> = ({ context }) => {
+export const ExecutionContext: React.FC<ExecutionContextProps> = ({ context }) => {
   const getTypeColor = (type: string) => {
     switch (type) {
       case 'string':
@@ -137,4 +137,3 @@ const ExecutionContext: React.FC<ExecutionContextProps> = ({ context }) => {
   );
 };
 
-export default ExecutionContext;

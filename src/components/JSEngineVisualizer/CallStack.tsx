@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import React from 'react';
 
-import InfoTooltip from './InfoTooltip';
+import { InfoTooltip } from './InfoTooltip';
 
 interface StackFrame {
   name: string;
@@ -13,7 +13,7 @@ interface CallStackProps {
   stack: StackFrame[];
 }
 
-const CallStack: React.FC<CallStackProps> = ({ stack }) => {
+export const CallStack: React.FC<CallStackProps> = ({ stack }) => {
   const getFrameColor = (type: string) => {
     switch (type) {
       case 'function':
@@ -109,4 +109,3 @@ const CallStack: React.FC<CallStackProps> = ({ stack }) => {
   );
 };
 
-export default CallStack;

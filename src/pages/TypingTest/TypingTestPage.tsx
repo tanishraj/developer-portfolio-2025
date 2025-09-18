@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import AnimatedBackground from '../../components/AnimatedBackground';
-import CustomCursor from '../../components/CustomCursor';
-import TypingTest from '../../components/TypingTest';
+import { AnimatedBackground } from '../../components/AnimatedBackground';
+import { CustomCursor } from '../../components/CustomCursor';
+import { TypingTest } from '../../components/TypingTest';
 
 const TypingTestPage: React.FC = () => {
   const navigate = useNavigate();

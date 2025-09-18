@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { FaGithub, FaExternalLinkAlt, FaReact, FaNodeJs, FaPython, FaFigma } from 'react-icons/fa';
 import { SiTypescript, SiTailwindcss, SiMongodb, SiFirebase } from 'react-icons/si';
 
-const Portfolio: React.FC = () => {
+export const Portfolio: React.FC = () => {
   const [filter, setFilter] = useState('all');
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
@@ -157,13 +157,13 @@ const Portfolio: React.FC = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="inline-block px-4 py-2 bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-full text-sm text-purple-400 mb-6"
+            className="inline-block px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-full text-sm text-blue-400 mb-6"
           >
             Portfolio
           </motion.span>
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
             Featured{' '}
-            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
               Projects
             </span>
           </h2>
@@ -186,7 +186,7 @@ const Portfolio: React.FC = () => {
               onClick={() => setFilter(category.id)}
               className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
                 filter === category.id
-                  ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg shadow-purple-500/25'
+                  ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg shadow-blue-500/25'
                   : 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white'
               }`}
             >
@@ -215,12 +215,12 @@ const Portfolio: React.FC = () => {
                 whileHover={{ y: -10 }}
                 onMouseEnter={() => setHoveredProject(project.id)}
                 onMouseLeave={() => setHoveredProject(null)}
-                className="group relative bg-gray-800/50 rounded-2xl overflow-hidden border border-gray-700 hover:border-purple-500/50 transition-all duration-300"
+                className="group relative bg-gray-800/50 rounded-2xl overflow-hidden border border-gray-700 hover:border-blue-500/50 transition-all duration-300"
               >
                 {/* Featured Badge */}
                 {project.featured && (
                   <div className="absolute top-4 right-4 z-10">
-                    <span className="px-3 py-1 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-semibold rounded-full">
+                    <span className="px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs font-semibold rounded-full">
                       Featured
                     </span>
                   </div>
@@ -308,7 +308,7 @@ const Portfolio: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mt-12"
         >
-          <button className="px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300">
+          <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300">
             View All Projects
           </button>
         </motion.div>
@@ -317,4 +317,3 @@ const Portfolio: React.FC = () => {
   );
 };
 
-export default Portfolio;

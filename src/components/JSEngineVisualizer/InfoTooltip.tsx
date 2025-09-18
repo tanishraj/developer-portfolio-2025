@@ -7,7 +7,7 @@ interface InfoTooltipProps {
   details?: string[];
 }
 
-const InfoTooltip: React.FC<InfoTooltipProps> = ({ title, description, details }) => {
+export const InfoTooltip: React.FC<InfoTooltipProps> = ({ title, description, details }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -48,4 +48,3 @@ const InfoTooltip: React.FC<InfoTooltipProps> = ({ title, description, details }
   );
 };
 
-export default InfoTooltip;

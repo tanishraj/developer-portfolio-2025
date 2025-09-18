@@ -1,1 +1,1 @@
-export { default } from './ScrollProgress';
+export { ScrollProgress } from './ScrollProgress';

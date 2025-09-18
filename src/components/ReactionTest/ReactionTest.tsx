@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 
-import ConfirmationModal from '../ConfirmationModal';
+import { ConfirmationModal } from '../ConfirmationModal';
 
 interface TestResult {
   time: number;
@@ -22,7 +22,7 @@ interface Stats {
 
 type TestMode = 'simple' | 'color' | 'shape' | 'position';
 
-const ReactionTest: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
+export const ReactionTest: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
   const [testMode, setTestMode] = useState<TestMode>('simple');
   const [testState, setTestState] = useState<
     'idle' | 'waiting' | 'ready' | 'testing' | 'complete' | 'tooEarly'
@@ -794,4 +794,3 @@ const ReactionTest: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOp
   );
 };
 
-export default ReactionTest;

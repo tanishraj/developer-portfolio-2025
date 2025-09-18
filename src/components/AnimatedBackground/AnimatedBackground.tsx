@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 
-const AnimatedBackground: React.FC = () => {
+export const AnimatedBackground: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -91,4 +91,3 @@ const AnimatedBackground: React.FC = () => {
   );
 };
 
-export default AnimatedBackground;

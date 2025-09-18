@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import AnimatedBackground from '../../components/AnimatedBackground';
-import CustomCursor from '../../components/CustomCursor';
-import ReactionTest from '../../components/ReactionTest';
+import { AnimatedBackground } from '../../components/AnimatedBackground';
+import { CustomCursor } from '../../components/CustomCursor';
+import { ReactionTest } from '../../components/ReactionTest';
 
 const ReactionTestPage: React.FC = () => {
   const navigate = useNavigate();

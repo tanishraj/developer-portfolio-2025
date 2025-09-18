@@ -8,7 +8,7 @@ interface CodeEditorProps {
   error?: string | null;
 }
 
-const CodeEditor: React.FC<CodeEditorProps> = ({ code, onChange, currentLine, error }) => {
+export const CodeEditor: React.FC<CodeEditorProps> = ({ code, onChange, currentLine, error }) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const lineNumbersRef = useRef<HTMLDivElement>(null);
 
@@ -107,4 +107,3 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ code, onChange, currentLine, er
   );
 };
 
-export default CodeEditor;

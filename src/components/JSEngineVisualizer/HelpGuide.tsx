@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import React, { useState } from 'react';
 
-const HelpGuide: React.FC = () => {
+export const HelpGuide: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -167,4 +167,3 @@ const HelpGuide: React.FC = () => {
   );
 };
 
-export default HelpGuide;

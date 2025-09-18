@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import HomePage from './components/HomePage';
-import NotFound from './components/NotFound';
+import { HomePage } from './components/HomePage';
+import { NotFound } from './components/NotFound';
 import JSEngineVisualizerPage from './pages/JSEngineVisualizer';
 import ReactionTestPage from './pages/ReactionTest';
 import SnakeGamePage from './pages/SnakeGame';

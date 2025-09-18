@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 
-const NotFound: React.FC = () => {
+export const NotFound: React.FC = () => {
   const [countdown, setCountdown] = useState(10);
 
   useEffect(() => {
@@ -228,4 +228,3 @@ const NotFound: React.FC = () => {
   );
 };
 
-export default NotFound;

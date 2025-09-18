@@ -1,5 +1,5 @@
 import { motion, useInView } from 'framer-motion';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import {
   FaReact,
   FaHtml5,
@@ -20,51 +20,72 @@ import {
   SiDocker,
 } from 'react-icons/si';
 
-const Skills: React.FC = () => {
+export const Skills: React.FC = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
 
   const skillCategories = [
     {
       title: 'Frontend Development',
       color: 'from-blue-500 to-cyan-500',
+      bgGradient: 'from-blue-500/20 to-cyan-500/20',
+      icon: '🎨',
+      description: 'Building beautiful, responsive user interfaces with modern frameworks and libraries for optimal user experience',
       skills: [
-        { name: 'React', level: 95, icon: <FaReact /> },
-        { name: 'TypeScript', level: 90, icon: <SiTypescript /> },
-        { name: 'Next.js', level: 85, icon: <SiNextdotjs /> },
-        { name: 'Tailwind CSS', level: 92, icon: <SiTailwindcss /> },
-        { name: 'Redux', level: 80, icon: <SiRedux /> },
+        { name: 'React', icon: <FaReact /> },
+        { name: 'TypeScript', icon: <SiTypescript /> },
+        { name: 'Next.js', icon: <SiNextdotjs /> },
+        { name: 'Tailwind CSS', icon: <SiTailwindcss /> },
+        { name: 'Redux', icon: <SiRedux /> },
+      ],
+      highlights: [
+        'Single Page Applications',
+        'Component Libraries',
+        'State Management',
+        'Performance Optimization',
+        'Responsive Design',
       ],
     },
     {
       title: 'Backend Development',
       color: 'from-purple-500 to-pink-500',
+      bgGradient: 'from-purple-500/20 to-pink-500/20',
+      icon: '⚙️',
+      description: 'Creating scalable server-side applications and RESTful APIs with robust architecture and security practices',
       skills: [
-        { name: 'Node.js', level: 88, icon: <FaNodeJs /> },
-        { name: 'MongoDB', level: 82, icon: <SiMongodb /> },
-        { name: 'GraphQL', level: 75, icon: <SiGraphql /> },
-        { name: 'Firebase', level: 85, icon: <SiFirebase /> },
-        { name: 'Python', level: 78, icon: <FaPython /> },
+        { name: 'Node.js', icon: <FaNodeJs /> },
+        { name: 'MongoDB', icon: <SiMongodb /> },
+        { name: 'GraphQL', icon: <SiGraphql /> },
+        { name: 'Firebase', icon: <SiFirebase /> },
+        { name: 'Python', icon: <FaPython /> },
+      ],
+      highlights: [
+        'RESTful API Design',
+        'Database Architecture',
+        'Authentication & Security',
+        'Cloud Services',
+        'Microservices',
       ],
     },
     {
       title: 'Tools & Design',
-      color: 'from-green-500 to-emerald-500',
+      color: 'from-green-500 to-teal-500',
+      bgGradient: 'from-green-500/20 to-teal-500/20',
+      icon: '🛠️',
+      description: 'Leveraging modern tools and design systems for efficient development workflow and seamless collaboration',
       skills: [
-        { name: 'Git', level: 90, icon: <FaGitAlt /> },
-        { name: 'Figma', level: 85, icon: <FaFigma /> },
-        { name: 'Docker', level: 70, icon: <SiDocker /> },
-        { name: 'HTML5', level: 95, icon: <FaHtml5 /> },
-        { name: 'CSS3', level: 93, icon: <FaCss3Alt /> },
+        { name: 'Git', icon: <FaGitAlt /> },
+        { name: 'Figma', icon: <FaFigma /> },
+        { name: 'Docker', icon: <SiDocker /> },
+        { name: 'HTML5', icon: <FaHtml5 /> },
+        { name: 'CSS3', icon: <FaCss3Alt /> },
+      ],
+      highlights: [
+        'Version Control',
+        'UI/UX Design',
+        'Containerization',
+        'CI/CD Pipelines',
+        'Agile Methodology',
       ],
     },
   ];
@@ -82,14 +103,6 @@ const Skills: React.FC = () => {
 
   return (
     <section id="skills" className="py-20 px-4 relative overflow-hidden">
-      {/* Interactive background gradient that follows mouse */}
-      <div
-        className="absolute inset-0 opacity-30 pointer-events-none"
-        style={{
-          background: `radial-gradient(circle 600px at ${mousePosition.x}px ${mousePosition.y}px, rgba(59, 130, 246, 0.1), transparent 40%)`,
-        }}
-      />
-
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
         <motion.div
@@ -104,13 +117,13 @@ const Skills: React.FC = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="inline-block px-4 py-2 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-full text-sm text-green-400 mb-6"
+            className="inline-block px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-full text-sm text-blue-400 mb-6"
           >
             Skills & Expertise
           </motion.span>
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
             Technical{' '}
-            <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
               Proficiencies
             </span>
           </h2>
@@ -128,49 +141,71 @@ const Skills: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
               viewport={{ once: true }}
-              className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700"
+              className="group relative"
             >
-              <div className="flex items-center mb-6">
-                <div
-                  className={`w-2 h-8 bg-gradient-to-b ${category.color} rounded-full mr-3`}
-                />
-                <h3 className="text-xl font-bold text-white">{category.title}</h3>
-              </div>
-              
-              <div className="space-y-4">
-                {category.skills.map((skill, skillIndex) => (
-                  <motion.div
-                    key={skillIndex}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
-                    viewport={{ once: true }}
-                  >
-                    <div className="flex items-center justify-between mb-2">
-                      <div className="flex items-center gap-3">
-                        <div className={`text-2xl bg-gradient-to-r ${category.color} bg-clip-text text-transparent`}>
+              <div className="relative bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700 hover:border-gray-600 transition-all h-full flex flex-col">
+                {/* Background Gradient */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${category.bgGradient} rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                
+                {/* Content */}
+                <div className="relative z-10 flex flex-col h-full">
+                  {/* Title - Single Line */}
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-3xl">{category.icon}</span>
+                    <h3 className="text-xl font-bold text-white truncate">{category.title}</h3>
+                  </div>
+                  
+                  {/* Description - 2 Lines */}
+                  <p className="text-gray-400 text-sm mb-6 line-clamp-2 min-h-[2.5rem]">
+                    {category.description}
+                  </p>
+                  
+                  {/* Technology Icons - No Borders */}
+                  <div className="flex flex-wrap gap-4 mb-6 min-h-[3rem]">
+                    {category.skills.map((skill, skillIndex) => (
+                      <motion.div
+                        key={skillIndex}
+                        initial={{ opacity: 0, scale: 0 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.3, delay: 0.1 + skillIndex * 0.05 }}
+                        viewport={{ once: true }}
+                        whileHover={{ scale: 1.2 }}
+                        className="group/icon relative"
+                      >
+                        <div className={`text-2xl ${category.color === 'from-blue-500 to-cyan-500' ? 'text-cyan-400' : category.color === 'from-purple-500 to-pink-500' ? 'text-purple-400' : 'text-green-400'} transition-transform`}>
                           {skill.icon}
                         </div>
-                        <span className="text-white font-medium">{skill.name}</span>
+                        {/* Tooltip */}
+                        <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover/icon:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-20">
+                          {skill.name}
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                  
+                  {/* Highlights - Exactly 5 Points */}
+                  <div className="space-y-2 flex-grow">
+                    {category.highlights.map((highlight, idx) => (
+                      <div key={idx} className="flex items-center gap-3 text-sm">
+                        <svg
+                          className="w-4 h-4 text-green-500 flex-shrink-0"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                        <span className="text-gray-400">{highlight}</span>
                       </div>
-                      <span className="text-gray-400 text-sm">{skill.level}%</span>
-                    </div>
-                    
-                    <div className="relative h-2 bg-gray-700 rounded-full overflow-hidden">
-                      <motion.div
-                        className={`absolute left-0 top-0 h-full bg-gradient-to-r ${category.color} rounded-full`}
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        transition={{ duration: 1, delay: 0.2 + skillIndex * 0.05 }}
-                        viewport={{ once: true }}
-                      />
-                      <div 
-                        className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 animate-shimmer"
-                        style={{ animationDelay: `${skillIndex * 0.2}s` }}
-                      />
-                    </div>
-                  </motion.div>
-                ))}
+                    ))}
+                  </div>
+                </div>
+                
+                {/* Corner accent */}
+                <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${category.color} opacity-10 rounded-tr-2xl rounded-bl-[40px]`} />
               </div>
             </motion.div>
           ))}
@@ -185,8 +220,11 @@ const Skills: React.FC = () => {
           viewport={{ once: true }}
           className="relative"
         >
-          <h3 className="text-2xl font-bold text-white text-center mb-12">
-            Primary Tech Stack
+          <h3 className="text-2xl font-bold text-center mb-12">
+            Primary{' '}
+            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              Tech Stack
+            </span>
           </h3>
           
           <div className="flex flex-wrap justify-center gap-6">
@@ -246,4 +284,3 @@ const Skills: React.FC = () => {
   );
 };
 
-export default Skills;

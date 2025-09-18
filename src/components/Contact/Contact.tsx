@@ -9,7 +9,7 @@ import {
   FaExclamationCircle,
 } from 'react-icons/fa';
 
-const Contact: React.FC = () => {
+export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -458,4 +458,3 @@ const Contact: React.FC = () => {
   );
 };
 
-export default Contact;

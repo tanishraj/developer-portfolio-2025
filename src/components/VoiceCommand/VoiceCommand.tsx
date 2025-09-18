@@ -31,7 +31,7 @@ declare global {
   }
 }
 
-const VoiceCommand: React.FC = () => {
+export const VoiceCommand: React.FC = () => {
   const navigate = useNavigate();
   const [isListening, setIsListening] = useState(false);
   const [transcript, setTranscript] = useState('');
@@ -478,4 +478,3 @@ const VoiceCommand: React.FC = () => {
   );
 };
 
-export default VoiceCommand;

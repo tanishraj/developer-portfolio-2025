@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const GameButton: React.FC = () => {
+export const GameButton: React.FC = () => {
   const navigate = useNavigate();
   const [isOffline, setIsOffline] = useState(!navigator.onLine);
   const [showButton] = useState(true);
@@ -150,4 +150,3 @@ const GameButton: React.FC = () => {
   );
 };
 
-export default GameButton;

@@ -1,1 +1,1 @@
-export { default } from './VoiceCommand';
+export { VoiceCommand } from './VoiceCommand';

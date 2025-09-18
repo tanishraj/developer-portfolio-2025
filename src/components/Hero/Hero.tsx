@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import React, { useEffect, useMemo, useState } from 'react';
 import { FaGithub, FaLinkedin, FaMedium } from 'react-icons/fa';
 
-const Hero: React.FC = () => {
+export const Hero: React.FC = () => {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
@@ -305,4 +305,3 @@ const Hero: React.FC = () => {
   );
 };
 
-export default Hero;

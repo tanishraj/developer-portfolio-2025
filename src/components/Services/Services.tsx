@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import React from 'react';
 import { FaPaintBrush, FaCode, FaMobile, FaRocket } from 'react-icons/fa';
 
-const Services: React.FC = () => {
+export const Services: React.FC = () => {
   const services = [
     {
       id: 1,
@@ -159,4 +159,3 @@ const Services: React.FC = () => {
   );
 };
 
-export default Services;

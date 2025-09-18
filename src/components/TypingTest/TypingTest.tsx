@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 
-import ConfirmationModal from '../ConfirmationModal';
+import { ConfirmationModal } from '../ConfirmationModal';
 
 interface TestResult {
   wpm: number;
@@ -21,7 +21,7 @@ interface Stats {
   favoriteLanguage: string;
 }
 
-const TypingTest: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
+export const TypingTest: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
   // Code snippets for different languages
   const codeSnippets = {
     javascript: [
@@ -688,4 +688,3 @@ const useDebounce = (value, delay) => {
   );
 };
 
-export default TypingTest;

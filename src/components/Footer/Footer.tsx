@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaGithub, FaLinkedin, FaMedium } from 'react-icons/fa';
 
-const Footer: React.FC = () => {
+export const Footer: React.FC = () => {
   const socialLinks = [
     { icon: <FaGithub />, href: 'https://github.com/tanishraj', label: 'GitHub' },
     { icon: <FaLinkedin />, href: 'https://www.linkedin.com/in/itsmetanishraj/', label: 'LinkedIn' },
@@ -14,7 +14,12 @@ const Footer: React.FC = () => {
         <div className="text-center">
           {/* Logo/Brand */}
           <div className="mb-6">
-            <h3 className="text-3xl font-bold text-white">Let's Connect</h3>
+            <h3 className="text-3xl font-bold">
+              Let's{' '}
+              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                Connect
+              </span>
+            </h3>
             <p className="text-gray-400 mt-2 text-lg">
               Feel free to reach out for collaborations or just a friendly hello
             </p>
@@ -56,4 +61,3 @@ const Footer: React.FC = () => {
   );
 };
 
-export default Footer;

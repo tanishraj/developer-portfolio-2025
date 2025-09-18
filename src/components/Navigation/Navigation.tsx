@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import React, { useState, useEffect } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
-const Navigation: React.FC = () => {
+export const Navigation: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -182,4 +182,3 @@ const Navigation: React.FC = () => {
   );
 };
 
-export default Navigation;

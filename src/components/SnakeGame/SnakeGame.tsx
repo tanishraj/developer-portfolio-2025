@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 
-import ConfirmationModal from '../ConfirmationModal';
+import { ConfirmationModal } from '../ConfirmationModal';
 
 interface Position {
   x: number;
@@ -27,7 +27,7 @@ const GRID_SIZE = 25;
 const CELL_SIZE = 24;
 const INITIAL_SPEED = 150;
 
-const SnakeGame: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
+export const SnakeGame: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
   const [snake, setSnake] = useState<Position[]>([{ x: 12, y: 12 }]);
   const [food, setFood] = useState<Position>({ x: 18, y: 18 });
   const [direction, setDirection] = useState<Position>({ x: 0, y: 0 });
@@ -563,4 +563,3 @@ const SnakeGame: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen,
   );
 };
 
-export default SnakeGame;
