@@ -17,9 +17,19 @@
     background-color: #0a0e27;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1280px) {
     * {
-      cursor: none !important;
+      cursor: none;
+    }
+    
+    /* Allow specific cursor styles for certain elements */
+    input, textarea, select {
+      cursor: none;
+    }
+    
+    /* Prevent cursor flickering on interactive elements */
+    a, button, [role="button"] {
+      cursor: none;
     }
   }
 
@@ -29,6 +39,15 @@
 }
 
 @layer utilities {
+  /* Custom cursor performance optimization */
+  .cursor-dot {
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+
   .mesh-gradient {
     background-image:
       radial-gradient(at 40% 20%, rgba(0, 217, 255, 0.13) 0px, transparent 50%),
