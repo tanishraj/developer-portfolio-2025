@@ -9,7 +9,7 @@ export const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="relative z-10 py-16 bg-[#0a0f1b] border-t border-gray-800/50 mt-20">
+    <footer className="relative z-10 py-16 border-t border-gray-800/50 mt-20">
       <div className="max-w-7xl mx-auto px-4 lg:px-8">
         <div className="text-center">
           {/* Logo/Brand */}
@@ -41,7 +41,7 @@ export const Footer: React.FC = () => {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700/50 hover:border-gray-600 transition-all"
+                className="w-12 h-12 bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700/50 hover:border-gray-600 hover:scale-110 transition-all"
                 aria-label={link.label}
               >
                 {link.icon}

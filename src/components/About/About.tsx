@@ -21,7 +21,7 @@ export const About: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-20 px-4 bg-gray-900/50">
+    <section id="about" className="py-20 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -77,10 +77,10 @@ export const About: React.FC = () => {
               clean code and thoughtful design to transform ideas into impactful products.
             </p>
             <div className="flex gap-4 justify-center lg:justify-start">
-              <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300">
+              <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/25 hover:scale-105 transition-all duration-300">
                 Download CV
               </button>
-              <button className="px-8 py-4 border-2 border-gray-600 text-white rounded-xl font-semibold hover:border-gray-400 hover:bg-gray-800/50 transition-all duration-300">
+              <button className="px-8 py-4 border-2 border-gray-600 text-white rounded-xl font-semibold hover:border-gray-400 hover:bg-gray-800/50 hover:scale-105 transition-all duration-300">
                 Contact Me
               </button>
             </div>

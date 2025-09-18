@@ -150,7 +150,7 @@ export const Services: React.FC = () => {
           <p className="text-gray-400 mb-6">
             Have a project in mind? Let's work together to bring it to life.
           </p>
-          <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300">
+          <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/25 hover:scale-105 transition-all duration-300">
             Start a Project
           </button>
         </motion.div>

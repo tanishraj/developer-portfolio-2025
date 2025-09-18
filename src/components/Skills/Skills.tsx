@@ -233,7 +233,7 @@ export const Skills: React.FC = () => {
                 key={index}
                 initial={{ opacity: 0, scale: 0 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
+                transition={{ duration: 0.3 }}
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 className="group relative"
               >

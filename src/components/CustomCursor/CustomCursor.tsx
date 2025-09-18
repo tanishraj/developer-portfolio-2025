@@ -9,7 +9,8 @@ export const CustomCursor: React.FC = () => {
   const cursorX = useMotionValue(0);
   const cursorY = useMotionValue(0);
   
-  const springConfig = { damping: 25, stiffness: 700 };
+  // Smoother spring config to prevent flickering
+  const springConfig = { damping: 30, stiffness: 400, mass: 0.5 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
@@ -83,29 +84,35 @@ export const CustomCursor: React.FC = () => {
     <>
       {/* Outer cursor */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 bg-white/20 border border-white/50 rounded-full pointer-events-none z-[10000] hidden xl:block will-change-transform"
+        className="fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none hidden xl:block"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
           translateX: '-50%',
           translateY: '-50%',
           opacity: isVisible ? 1 : 0,
+          border: '1px solid rgba(255, 255, 255, 0.5)',
+          backgroundColor: 'rgba(255, 255, 255, 0.1)',
+          zIndex: 99999,
+          willChange: 'transform',
         }}
         animate={{
           scale: cursorVariant === 'hover' ? 1.5 : 1,
         }}
-        transition={{ type: 'spring', stiffness: 500, damping: 28 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
       />
       
       {/* Inner dot cursor */}
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 bg-white rounded-full pointer-events-none z-[10001] hidden xl:block will-change-transform"
+        className="fixed top-0 left-0 w-2 h-2 bg-white rounded-full pointer-events-none hidden xl:block"
         style={{
           x: cursorX,
           y: cursorY,
           translateX: '-50%',
           translateY: '-50%',
           opacity: isVisible ? 1 : 0,
+          zIndex: 100000,
+          willChange: 'transform',
         }}
       />
     </>
