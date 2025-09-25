@@ -18,18 +18,17 @@ export const Portfolio: React.FC = () => {
     {
       id: 1,
       category: 'web',
-      title: 'E-Commerce Platform',
+      title: 'Online Code Editor',
       description:
-        'Full-stack e-commerce solution with real-time inventory, payment processing, and admin dashboard',
-      image: 'https://via.placeholder.com/400x300/4F46E5/ffffff?text=E-Commerce',
+        'A powerful browser-based code editor with syntax highlighting, multiple language support, and real-time preview',
+      image: '/assets/online-editor.png',
       technologies: [
         { icon: <FaReact />, name: 'React' },
-        { icon: <FaNodeJs />, name: 'Node.js' },
-        { icon: <SiMongodb />, name: 'MongoDB' },
+        { icon: <SiTypescript />, name: 'TypeScript' },
         { icon: <SiTailwindcss />, name: 'Tailwind' },
       ],
-      github: 'https://github.com',
-      live: 'https://example.com',
+      github: 'https://github.com/tanishraj/online_code_editor',
+      live: 'https://my-js-editor.vercel.app/',
       featured: true,
     },
     {
