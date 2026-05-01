@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import React from 'react';
 
 export const About: React.FC = () => {
+  const cvPath = `${process.env.PUBLIC_URL}/CV-Tanishraj-Frontend-Developer.pdf`;
+
   const experienceHighlights = [
     {
       id: 1,
@@ -84,7 +86,9 @@ export const About: React.FC = () => {
             </p>
             <div className="flex gap-4 justify-center lg:justify-start">
               <a
-                href="/CV-Tanishraj-Frontend-Developer.pdf"
+                href={cvPath}
+                download="Tanish-Raj-Frontend-Developer-CV.pdf"
+                data-cv-download
                 className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/25 hover:scale-105 transition-all duration-300"
               >
                 Download CV

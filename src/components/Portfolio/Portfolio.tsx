@@ -1,15 +1,22 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import React, { useState } from 'react';
-import { FaGithub, FaExternalLinkAlt, FaReact, FaMobileAlt, FaUniversity } from 'react-icons/fa';
+import {
+  FaExternalLinkAlt,
+  FaGamepad,
+  FaGithub,
+  FaGraduationCap,
+  FaHtml5,
+  FaKeyboard,
+  FaMobileAlt,
+  FaReact,
+  FaUniversity,
+} from 'react-icons/fa';
 import {
   SiTypescript,
   SiTailwindcss,
-  SiRedux,
   SiGraphql,
-  SiVuedotjs,
   SiApollographql,
   SiVite,
-  SiJest,
 } from 'react-icons/si';
 
 export const Portfolio: React.FC = () => {
@@ -17,10 +24,12 @@ export const Portfolio: React.FC = () => {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
   const categories = [
-    { id: 'all', label: 'All Work', count: 6 },
+    { id: 'all', label: 'All Work', count: 7 },
     { id: 'finance', label: 'Fintech', count: 2 },
-    { id: 'banking', label: 'Banking', count: 2 },
-    { id: 'enterprise', label: 'Enterprise', count: 2 },
+    { id: 'banking', label: 'Banking', count: 1 },
+    { id: 'enterprise', label: 'Enterprise', count: 1 },
+    { id: 'games', label: 'Games', count: 2 },
+    { id: 'learning', label: 'Learning', count: 1 },
   ];
 
   const projects = [
@@ -30,14 +39,14 @@ export const Portfolio: React.FC = () => {
       title: 'Liquidity Capital Finance Platforms',
       description:
         'Data-heavy capital formation and private credit workflows built with React, TypeScript, Vite, Apollo Client, and GraphQL.',
-      image: 'https://via.placeholder.com/400x300/2563EB/ffffff?text=Finance+Platform',
+      image: '/assets/liquidity-platform.png',
       technologies: [
         { icon: <FaReact />, name: 'React' },
         { icon: <SiTypescript />, name: 'TypeScript' },
         { icon: <SiGraphql />, name: 'GraphQL' },
       ],
       github: 'https://github.com/tanishraj',
-      live: 'https://www.tanishraj.vercel.app',
+      live: 'https://app.liquiditygroup.com/',
       featured: true,
     },
     {
@@ -46,14 +55,14 @@ export const Portfolio: React.FC = () => {
       title: 'AI Assistant & Lexical Editor Workflows',
       description:
         'Rich text and AI-assisted investment intelligence experiences for structured content creation and report-like outputs.',
-      image: 'https://via.placeholder.com/400x300/7C3AED/ffffff?text=AI+Assistant',
+      image: '/assets/liquidity-ai-editor.png',
       technologies: [
         { icon: <FaReact />, name: 'React' },
         { icon: <SiTypescript />, name: 'TypeScript' },
         { icon: <SiApollographql />, name: 'Apollo Client' },
       ],
       github: 'https://github.com/tanishraj',
-      live: 'https://www.tanishraj.vercel.app',
+      live: 'https://app.liquiditygroup.com/v2/signin',
       featured: true,
     },
     {
@@ -62,60 +71,79 @@ export const Portfolio: React.FC = () => {
       title: 'Digital Banking Platforms',
       description:
         'Customer-facing banking web and mobile interfaces delivered with React, Next.js, TypeScript, and React Native.',
-      image: 'https://via.placeholder.com/400x300/0891B2/ffffff?text=Digital+Banking',
+      image: '/assets/digital-banking-platform.png',
       technologies: [
         { icon: <FaUniversity />, name: 'Banking' },
         { icon: <SiTypescript />, name: 'TypeScript' },
         { icon: <FaMobileAlt />, name: 'React Native' },
       ],
       github: 'https://github.com/tanishraj',
-      live: 'https://www.tanishraj.vercel.app',
+      live: 'https://bsf.sa/english/home',
       featured: true,
-    },
-    {
-      id: 4,
-      category: 'banking',
-      title: 'Customer Happiness Portal',
-      description:
-        'Legacy customer portal modernization, including self-service lost/stolen card workflows and maintainable component boundaries.',
-      image: 'https://via.placeholder.com/400x300/059669/ffffff?text=Customer+Portal',
-      technologies: [
-        { icon: <FaReact />, name: 'React' },
-        { icon: <SiTypescript />, name: 'TypeScript' },
-        { icon: <SiRedux />, name: 'Redux' },
-      ],
-      github: 'https://github.com/tanishraj',
-      live: 'https://www.tanishraj.vercel.app',
-    },
-    {
-      id: 5,
-      category: 'enterprise',
-      title: 'Enterprise Oil & Gas Applications',
-      description:
-        'Enterprise web applications built with Vue.js, Vuex, Kendo UI, secure coding practices, and SonarQube quality standards.',
-      image: 'https://via.placeholder.com/400x300/F59E0B/ffffff?text=Enterprise+Apps',
-      technologies: [
-        { icon: <SiVuedotjs />, name: 'Vue.js' },
-        { icon: <SiRedux />, name: 'Vuex' },
-        { icon: <SiJest />, name: 'Testing' },
-      ],
-      github: 'https://github.com/tanishraj',
-      live: 'https://www.tanishraj.vercel.app',
     },
     {
       id: 6,
       category: 'enterprise',
-      title: 'Reusable Design System Foundation',
+      title: 'Barebones UI Library',
       description:
-        'Shared component patterns and UI foundations that improved consistency, accessibility, delivery speed, and maintainability.',
-      image: 'https://via.placeholder.com/400x300/DB2777/ffffff?text=Design+System',
+        'A reusable UI library and component foundation focused on clean patterns, consistent styling, and faster frontend delivery.',
+      image: '/assets/barebones-ui.png',
       technologies: [
         { icon: <FaReact />, name: 'React' },
         { icon: <SiTailwindcss />, name: 'Tailwind' },
         { icon: <SiVite />, name: 'Vite' },
       ],
+      github: 'https://github.com/tanishraj/barebones-ui',
+      live: 'https://tanishraj.github.io/barebones-ui/',
+      featured: true,
+    },
+    {
+      id: 7,
+      category: 'games',
+      title: 'Snake Game',
+      description:
+        'A playable browser snake game with responsive controls, score tracking, and polished React interactions.',
+      image: '/assets/snake-game.png',
+      technologies: [
+        { icon: <FaReact />, name: 'React' },
+        { icon: <SiTypescript />, name: 'TypeScript' },
+        { icon: <FaGamepad />, name: 'Game UI' },
+      ],
       github: 'https://github.com/tanishraj',
-      live: 'https://www.tanishraj.vercel.app',
+      live: 'https://hire-tanishraj.vercel.app/games/snake',
+      featured: true,
+    },
+    {
+      id: 8,
+      category: 'games',
+      title: 'Typing Test',
+      description:
+        'A typing speed test experience for practicing accuracy, rhythm, and words-per-minute performance.',
+      image: '/assets/typing-test.png',
+      technologies: [
+        { icon: <FaReact />, name: 'React' },
+        { icon: <SiTypescript />, name: 'TypeScript' },
+        { icon: <FaKeyboard />, name: 'Typing UX' },
+      ],
+      github: 'https://github.com/tanishraj',
+      live: 'https://hire-tanishraj.vercel.app/games/typing',
+      featured: true,
+    },
+    {
+      id: 9,
+      category: 'learning',
+      title: 'Learn HTML Portal',
+      description:
+        'An interactive HTML learning portal that helps beginners understand tags, structure, and page-building fundamentals.',
+      image: '/assets/learn-html.png',
+      technologies: [
+        { icon: <FaHtml5 />, name: 'HTML5' },
+        { icon: <FaReact />, name: 'React' },
+        { icon: <FaGraduationCap />, name: 'Learning UX' },
+      ],
+      github: 'https://github.com/tanishraj',
+      live: 'https://learn-html-with-tanish.vercel.app/',
+      featured: true,
     },
   ];
 
@@ -184,7 +212,7 @@ export const Portfolio: React.FC = () => {
         {/* Projects Grid */}
         <motion.div 
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          className="flex flex-wrap justify-center gap-6"
         >
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, index) => (
@@ -198,7 +226,7 @@ export const Portfolio: React.FC = () => {
                 whileHover={{ y: -10 }}
                 onMouseEnter={() => setHoveredProject(project.id)}
                 onMouseLeave={() => setHoveredProject(null)}
-                className="group relative bg-gray-800/50 rounded-2xl overflow-hidden border border-gray-700 hover:border-blue-500/50 transition-all duration-300"
+                className="group relative w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] xl:w-[calc(25%-1.125rem)] bg-gray-800/50 rounded-2xl overflow-hidden border border-gray-700 hover:border-blue-500/50 transition-all duration-300 h-full flex flex-col"
               >
                 {/* Featured Badge */}
                 {project.featured && (
@@ -249,7 +277,7 @@ export const Portfolio: React.FC = () => {
                 </div>
 
                 {/* Project Details */}
-                <div className="p-6">
+                <div className="p-6 flex flex-col flex-1">
                   <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">
                     {project.title}
                   </h3>
@@ -258,7 +286,7 @@ export const Portfolio: React.FC = () => {
                   </p>
 
                   {/* Technologies */}
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 mt-auto pt-2">
                     {project.technologies.map((tech, techIndex) => (
                       <motion.div
                         key={techIndex}

@@ -141,6 +141,8 @@ export const VoiceCommand: React.FC = () => {
   const handleVoiceCommand = (command: string) => {
     let executed = false;
     let feedbackMessage = '';
+    const mentionsCv = command.includes('resume') || command.includes('cv');
+    const requestsCv = mentionsCv && (command.includes('download') || command.includes('share'));
 
     // Introduction command
     if (
@@ -214,12 +216,12 @@ export const VoiceCommand: React.FC = () => {
       executed = true;
     }
     // Action commands
-    else if (command.includes('download') && command.includes('resume')) {
+    else if (requestsCv) {
       // Trigger resume download if available
-      const resumeLink = document.querySelector('a[download*="resume"]') as HTMLAnchorElement;
+      const resumeLink = document.querySelector('a[data-cv-download]') as HTMLAnchorElement;
       if (resumeLink) {
         resumeLink.click();
-        feedbackMessage = 'Downloading resume';
+        feedbackMessage = 'Downloading CV';
         executed = true;
       }
     } else if (command.includes('email') || command.includes('mail')) {
@@ -477,4 +479,3 @@ export const VoiceCommand: React.FC = () => {
     </>
   );
 };
-
