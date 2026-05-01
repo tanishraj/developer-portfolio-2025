@@ -7,35 +7,37 @@ export const Services: React.FC = () => {
     {
       id: 1,
       icon: <FaPaintBrush />,
-      title: 'UI/UX Design',
+      title: 'Design Systems',
       description:
-        'Creating intuitive and beautiful user interfaces that delight users and drive engagement.',
-      features: ['User Research', 'Wireframing', 'Prototyping', 'Design Systems'],
+        'Creating reusable UI foundations that improve consistency, accessibility, and delivery speed.',
+      features: ['Component Libraries', 'Design Tokens', 'Storybook', 'Accessible UI'],
       color: 'from-blue-500 to-cyan-500',
     },
     {
       id: 2,
       icon: <FaCode />,
-      title: 'Web Development',
-      description: 'Building responsive and performant web applications using modern technologies.',
-      features: ['React/Next.js', 'Node.js', 'TypeScript', 'API Development'],
+      title: 'Frontend Engineering',
+      description:
+        'Building scalable, maintainable web applications using React, TypeScript, Next.js, and Vue.',
+      features: ['React/Next.js', 'TypeScript', 'Vue.js', 'GraphQL/REST'],
       color: 'from-purple-500 to-pink-500',
     },
     {
       id: 3,
       icon: <FaMobile />,
-      title: 'Mobile Development',
+      title: 'Mobile Frontends',
       description:
-        'Developing cross-platform mobile applications that work seamlessly on all devices.',
-      features: ['React Native', 'Flutter', 'iOS/Android', 'App Store Deployment'],
+        'Developing responsive and cross-platform interfaces for banking and customer workflows.',
+      features: ['React Native', 'Responsive UI', 'Reusable Patterns', 'Performance'],
       color: 'from-green-500 to-teal-500',
     },
     {
       id: 4,
       icon: <FaRocket />,
-      title: 'Product Strategy',
-      description: 'Helping businesses define and execute their digital product strategy.',
-      features: ['Market Research', 'MVP Development', 'Growth Strategy', 'Analytics'],
+      title: 'Legacy Modernization',
+      description:
+        'Migrating older frontend systems into cleaner architectures with better quality controls.',
+      features: ['jQuery to React', 'Code Splitting', 'Testing Strategy', 'CI/CD Support'],
       color: 'from-orange-500 to-red-500',
     },
   ];
@@ -67,7 +69,8 @@ export const Services: React.FC = () => {
             </span>
           </h2>
           <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-            Offering a comprehensive range of services to bring your digital vision to life
+            Frontend services shaped by nearly a decade of banking, fintech, and enterprise
+            product delivery
           </p>
         </motion.div>
 
@@ -148,7 +151,7 @@ export const Services: React.FC = () => {
           className="text-center mt-16"
         >
           <p className="text-gray-400 mb-6">
-            Have a project in mind? Let's work together to bring it to life.
+            Need senior frontend ownership for a complex product, migration, or design system?
           </p>
           <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/25 hover:scale-105 transition-all duration-300">
             Start a Project
@@ -158,4 +161,3 @@ export const Services: React.FC = () => {
     </section>
   );
 };
-
