@@ -3,6 +3,10 @@ import React from 'react';
 import { FaPaintBrush, FaCode, FaMobile, FaRocket } from 'react-icons/fa';
 
 export const Services: React.FC = () => {
+  const scrollToContact = () => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   const services = [
     {
       id: 1,
@@ -153,7 +157,11 @@ export const Services: React.FC = () => {
           <p className="text-gray-400 mb-6">
             Need senior frontend ownership for a complex product, migration, or design system?
           </p>
-          <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/25 hover:scale-105 transition-all duration-300">
+          <button
+            type="button"
+            onClick={scrollToContact}
+            className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/25 hover:scale-105 transition-all duration-300"
+          >
             Start a Project
           </button>
         </motion.div>

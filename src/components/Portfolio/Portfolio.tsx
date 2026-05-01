@@ -23,6 +23,11 @@ export const Portfolio: React.FC = () => {
   const [filter, setFilter] = useState('all');
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
+  const showAllProjects = () => {
+    setFilter('all');
+    document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   const categories = [
     { id: 'all', label: 'All Work', count: 7 },
     { id: 'finance', label: 'Fintech', count: 2 },
@@ -319,7 +324,11 @@ export const Portfolio: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mt-12"
         >
-          <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/25 hover:scale-105 transition-all duration-300">
+          <button
+            type="button"
+            onClick={showAllProjects}
+            className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/25 hover:scale-105 transition-all duration-300"
+          >
             View All Projects
           </button>
         </motion.div>

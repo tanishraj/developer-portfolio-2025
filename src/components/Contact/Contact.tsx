@@ -10,6 +10,8 @@ import {
 } from 'react-icons/fa';
 
 export const Contact: React.FC = () => {
+  const contactEmail = 'hire.tanishraj@gmail.com';
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -115,22 +117,29 @@ export const Contact: React.FC = () => {
 
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus('success');
+    const emailSubject = encodeURIComponent(formData.subject.trim());
+    const emailBody = encodeURIComponent(
+      [
+        `Name: ${formData.name.trim()}`,
+        `Email: ${formData.email.trim()}`,
+        '',
+        formData.message.trim(),
+      ].join('\n'),
+    );
 
-      // Reset form after successful submission
-      setTimeout(() => {
-        setFormData({
-          name: '',
-          email: '',
-          subject: '',
-          message: '',
-        });
-        setSubmitStatus('idle');
-      }, 3000);
-    }, 2000);
+    window.location.href = `mailto:${contactEmail}?subject=${emailSubject}&body=${emailBody}`;
+    setIsSubmitting(false);
+    setSubmitStatus('success');
+
+    setTimeout(() => {
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+      });
+      setSubmitStatus('idle');
+    }, 3000);
   };
 
   return (
@@ -192,7 +201,7 @@ export const Contact: React.FC = () => {
                   >
                     <FaCheckCircle className="text-green-400" />
                     <span className="text-green-400">
-                      Message sent successfully! I'll get back to you soon.
+                      Your email app is opening with the message ready to send.
                     </span>
                   </motion.div>
                 )}
@@ -424,14 +433,14 @@ export const Contact: React.FC = () => {
               <h5 className="text-lg font-semibold text-white mb-4">Quick Contact</h5>
               <div className="space-y-4">
                 <motion.a
-                  href="mailto:hire.tanishraj@gmail.com"
+                  href={`mailto:${contactEmail}`}
                   whileHover={{ x: 5 }}
                   className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors"
                 >
                   <div className="p-2 bg-gray-800 rounded-lg">
                     <FaEnvelope className="text-blue-400" />
                   </div>
-                  <span>hire.tanishraj@gmail.com</span>
+                  <span>{contactEmail}</span>
                 </motion.a>
                 <motion.a
                   href="tel:+971561338400"
