@@ -15,11 +15,11 @@ export const Hero: React.FC = () => {
 
   const roles = useMemo(() => {
     return [
-      'Frontend Engineer',
-      'React Developer',
-      'UI/UX Enthusiast',
-      'Problem Solver',
-      'Creative Coder',
+      'Senior Frontend Engineer',
+      'React & TypeScript Specialist',
+      'Frontend Architecture Lead',
+      'Design Systems Builder',
+      'Performance-Focused Engineer',
     ];
   }, []) ;
 
@@ -50,9 +50,10 @@ export const Hero: React.FC = () => {
 
   const codeSnippet = `const developer = {
   name: 'Tanish Raj',
-  skills: ['React', 'TypeScript', 'Node.js'],
-  passion: 'Building Amazing Experiences',
-  motto: 'Code. Create. Innovate.'
+  role: 'Senior Frontend Engineer',
+  location: 'Abu Dhabi, UAE',
+  skills: ['React', 'TypeScript', 'Next.js', 'GraphQL'],
+  focus: 'Scalable, accessible product UIs'
 };`;
 
   return (
@@ -134,8 +135,9 @@ export const Hero: React.FC = () => {
             transition={{ delay: 0.6 }}
             className="text-gray-400 text-lg mb-8 leading-relaxed"
           >
-            Crafting elegant solutions with modern web technologies. Specialized in building
-            responsive, performant, and user-friendly applications.
+            Senior Frontend Engineer with nearly 10 years of experience building scalable,
+            high-performance web and mobile applications across banking, fintech, enterprise, and
+            product-led teams.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -266,7 +268,7 @@ export const Hero: React.FC = () => {
             }}
             className="absolute -top-4 -right-4 px-3 py-1 bg-blue-500 rounded-full text-sm font-semibold"
           >
-            React Expert
+            React.js
           </motion.div>
 
           <motion.div
@@ -281,7 +283,7 @@ export const Hero: React.FC = () => {
             }}
             className="absolute -bottom-4 -left-4 px-3 py-1 bg-purple-500 rounded-full text-sm font-semibold"
           >
-            TypeScript
+            Frontend Architecture
           </motion.div>
         </motion.div>
       </div>
@@ -304,4 +306,3 @@ export const Hero: React.FC = () => {
     </section>
   );
 };
-

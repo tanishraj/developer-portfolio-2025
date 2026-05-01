@@ -4,20 +4,20 @@ import {
   FaReact,
   FaHtml5,
   FaCss3Alt,
-  FaNodeJs,
   FaGitAlt,
-  FaFigma,
-  FaPython,
 } from 'react-icons/fa';
 import {
   SiTypescript,
   SiTailwindcss,
   SiNextdotjs,
-  SiMongodb,
-  SiFirebase,
   SiRedux,
   SiGraphql,
-  SiDocker,
+  SiVuedotjs,
+  SiApollographql,
+  SiVite,
+  SiJest,
+  SiStorybook,
+  SiWebpack,
 } from 'react-icons/si';
 
 export const Skills: React.FC = () => {
@@ -26,66 +26,69 @@ export const Skills: React.FC = () => {
 
   const skillCategories = [
     {
-      title: 'Frontend Development',
+      title: 'Frontend Engineering',
       color: 'from-blue-500 to-cyan-500',
       bgGradient: 'from-blue-500/20 to-cyan-500/20',
       icon: '🎨',
-      description: 'Building beautiful, responsive user interfaces with modern frameworks and libraries for optimal user experience',
+      description:
+        'Building scalable, responsive, accessible product interfaces with modern frontend frameworks',
       skills: [
         { name: 'React', icon: <FaReact /> },
         { name: 'TypeScript', icon: <SiTypescript /> },
         { name: 'Next.js', icon: <SiNextdotjs /> },
+        { name: 'Vue.js', icon: <SiVuedotjs /> },
         { name: 'Tailwind CSS', icon: <SiTailwindcss /> },
-        { name: 'Redux', icon: <SiRedux /> },
       ],
       highlights: [
-        'Single Page Applications',
-        'Component Libraries',
-        'State Management',
+        'React.js & Next.js',
+        'Vue.js & React Native',
+        'Accessible UI',
         'Performance Optimization',
-        'Responsive Design',
+        'Legacy Migration',
       ],
     },
     {
-      title: 'Backend Development',
+      title: 'Architecture & Data',
       color: 'from-purple-500 to-pink-500',
       bgGradient: 'from-purple-500/20 to-pink-500/20',
       icon: '⚙️',
-      description: 'Creating scalable server-side applications and RESTful APIs with robust architecture and security practices',
+      description:
+        'Designing maintainable frontend architecture, API boundaries, and reusable component patterns',
       skills: [
-        { name: 'Node.js', icon: <FaNodeJs /> },
-        { name: 'MongoDB', icon: <SiMongodb /> },
+        { name: 'Redux Toolkit', icon: <SiRedux /> },
+        { name: 'Apollo Client', icon: <SiApollographql /> },
         { name: 'GraphQL', icon: <SiGraphql /> },
-        { name: 'Firebase', icon: <SiFirebase /> },
-        { name: 'Python', icon: <FaPython /> },
+        { name: 'Vite', icon: <SiVite /> },
+        { name: 'Webpack', icon: <SiWebpack /> },
       ],
       highlights: [
-        'RESTful API Design',
-        'Database Architecture',
-        'Authentication & Security',
-        'Cloud Services',
-        'Microservices',
+        'Frontend Architecture',
+        'Design Systems',
+        'Micro Frontends',
+        'GraphQL & REST APIs',
+        'Code Splitting',
       ],
     },
     {
-      title: 'Tools & Design',
+      title: 'Quality & Delivery',
       color: 'from-green-500 to-teal-500',
       bgGradient: 'from-green-500/20 to-teal-500/20',
       icon: '🛠️',
-      description: 'Leveraging modern tools and design systems for efficient development workflow and seamless collaboration',
+      description:
+        'Raising quality through testing, documentation, code review, CI/CD, and team collaboration',
       skills: [
         { name: 'Git', icon: <FaGitAlt /> },
-        { name: 'Figma', icon: <FaFigma /> },
-        { name: 'Docker', icon: <SiDocker /> },
+        { name: 'Jest', icon: <SiJest /> },
+        { name: 'Storybook', icon: <SiStorybook /> },
         { name: 'HTML5', icon: <FaHtml5 /> },
         { name: 'CSS3', icon: <FaCss3Alt /> },
       ],
       highlights: [
-        'Version Control',
-        'UI/UX Design',
-        'Containerization',
-        'CI/CD Pipelines',
-        'Agile Methodology',
+        'Jest & Vitest',
+        'React Testing Library',
+        'CI/CD Collaboration',
+        'Code Review & Mentoring',
+        'Technical Documentation',
       ],
     },
   ];
@@ -94,11 +97,11 @@ export const Skills: React.FC = () => {
     { icon: <FaReact />, name: 'React', color: 'text-cyan-400' },
     { icon: <SiTypescript />, name: 'TypeScript', color: 'text-blue-400' },
     { icon: <SiNextdotjs />, name: 'Next.js', color: 'text-white' },
-    { icon: <FaNodeJs />, name: 'Node.js', color: 'text-green-400' },
+    { icon: <SiVuedotjs />, name: 'Vue.js', color: 'text-green-400' },
     { icon: <SiTailwindcss />, name: 'Tailwind', color: 'text-cyan-300' },
-    { icon: <SiMongodb />, name: 'MongoDB', color: 'text-green-500' },
+    { icon: <SiGraphql />, name: 'GraphQL', color: 'text-pink-400' },
     { icon: <FaGitAlt />, name: 'Git', color: 'text-orange-400' },
-    { icon: <FaFigma />, name: 'Figma', color: 'text-purple-400' },
+    { icon: <SiVite />, name: 'Vite', color: 'text-purple-400' },
   ];
 
   return (
@@ -128,7 +131,8 @@ export const Skills: React.FC = () => {
             </span>
           </h2>
           <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-            A comprehensive overview of my technical skills and expertise levels
+            Frontend technologies, architecture practices, and delivery workflows I use in
+            production
           </p>
         </motion.div>
 
@@ -260,9 +264,9 @@ export const Skills: React.FC = () => {
           className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8"
         >
           {[
-            { label: 'Years of Experience', value: '5+', color: 'from-blue-400 to-cyan-400' },
-            { label: 'Projects Completed', value: '50+', color: 'from-purple-400 to-pink-400' },
-            { label: 'Technologies Mastered', value: '20+', color: 'from-green-400 to-emerald-400' },
+            { label: 'Years of Experience', value: '10', color: 'from-blue-400 to-cyan-400' },
+            { label: 'Enterprise Domains', value: '4+', color: 'from-purple-400 to-pink-400' },
+            { label: 'Core Technologies', value: '25+', color: 'from-green-400 to-emerald-400' },
           ].map((stat, index) => (
             <motion.div
               key={index}
@@ -283,4 +287,3 @@ export const Skills: React.FC = () => {
     </section>
   );
 };
-

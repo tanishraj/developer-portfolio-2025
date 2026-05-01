@@ -1,138 +1,121 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import React, { useState } from 'react';
-import { FaGithub, FaExternalLinkAlt, FaReact, FaNodeJs, FaPython, FaFigma } from 'react-icons/fa';
-import { SiTypescript, SiTailwindcss, SiMongodb, SiFirebase } from 'react-icons/si';
+import { FaGithub, FaExternalLinkAlt, FaReact, FaMobileAlt, FaUniversity } from 'react-icons/fa';
+import {
+  SiTypescript,
+  SiTailwindcss,
+  SiRedux,
+  SiGraphql,
+  SiVuedotjs,
+  SiApollographql,
+  SiVite,
+  SiJest,
+} from 'react-icons/si';
 
 export const Portfolio: React.FC = () => {
   const [filter, setFilter] = useState('all');
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
   const categories = [
-    { id: 'all', label: 'All Projects', count: 8 },
-    { id: 'web', label: 'Web Apps', count: 4 },
-    { id: 'mobile', label: 'Mobile', count: 2 },
-    { id: 'design', label: 'UI/UX', count: 2 },
+    { id: 'all', label: 'All Work', count: 6 },
+    { id: 'finance', label: 'Fintech', count: 2 },
+    { id: 'banking', label: 'Banking', count: 2 },
+    { id: 'enterprise', label: 'Enterprise', count: 2 },
   ];
 
   const projects = [
     {
       id: 1,
-      category: 'web',
-      title: 'Online Code Editor',
+      category: 'finance',
+      title: 'Liquidity Capital Finance Platforms',
       description:
-        'A powerful browser-based code editor with syntax highlighting, multiple language support, and real-time preview',
-      image: '/assets/online-editor.png',
+        'Data-heavy capital formation and private credit workflows built with React, TypeScript, Vite, Apollo Client, and GraphQL.',
+      image: 'https://via.placeholder.com/400x300/2563EB/ffffff?text=Finance+Platform',
       technologies: [
         { icon: <FaReact />, name: 'React' },
         { icon: <SiTypescript />, name: 'TypeScript' },
-        { icon: <SiTailwindcss />, name: 'Tailwind' },
+        { icon: <SiGraphql />, name: 'GraphQL' },
       ],
-      github: 'https://github.com/tanishraj/online_code_editor',
-      live: 'https://my-js-editor.vercel.app/',
+      github: 'https://github.com/tanishraj',
+      live: 'https://www.tanishraj.vercel.app',
       featured: true,
     },
     {
       id: 2,
-      category: 'mobile',
-      title: 'AR Travel Guide',
+      category: 'finance',
+      title: 'AI Assistant & Lexical Editor Workflows',
       description:
-        'Augmented reality mobile app for tourists with real-time information overlays and navigation',
-      image: 'https://via.placeholder.com/400x300/10B981/ffffff?text=AR+Travel',
+        'Rich text and AI-assisted investment intelligence experiences for structured content creation and report-like outputs.',
+      image: 'https://via.placeholder.com/400x300/7C3AED/ffffff?text=AI+Assistant',
       technologies: [
-        { icon: <FaReact />, name: 'React Native' },
+        { icon: <FaReact />, name: 'React' },
         { icon: <SiTypescript />, name: 'TypeScript' },
-        { icon: <SiFirebase />, name: 'Firebase' },
+        { icon: <SiApollographql />, name: 'Apollo Client' },
       ],
-      github: 'https://github.com',
-      live: 'https://example.com',
+      github: 'https://github.com/tanishraj',
+      live: 'https://www.tanishraj.vercel.app',
       featured: true,
     },
     {
       id: 3,
-      category: 'web',
-      title: 'Analytics Dashboard',
+      category: 'banking',
+      title: 'Digital Banking Platforms',
       description:
-        'Real-time data visualization dashboard with advanced filtering and export capabilities',
-      image: 'https://via.placeholder.com/400x300/F59E0B/ffffff?text=Analytics',
+        'Customer-facing banking web and mobile interfaces delivered with React, Next.js, TypeScript, and React Native.',
+      image: 'https://via.placeholder.com/400x300/0891B2/ffffff?text=Digital+Banking',
       technologies: [
-        { icon: <FaReact />, name: 'React' },
+        { icon: <FaUniversity />, name: 'Banking' },
         { icon: <SiTypescript />, name: 'TypeScript' },
-        { icon: <FaPython />, name: 'Python' },
+        { icon: <FaMobileAlt />, name: 'React Native' },
       ],
-      github: 'https://github.com',
-      live: 'https://example.com',
-    },
-    {
-      id: 4,
-      category: 'design',
-      title: 'Design System',
-      description: 'Comprehensive design system with reusable components and design tokens',
-      image: 'https://via.placeholder.com/400x300/8B5CF6/ffffff?text=Design+System',
-      technologies: [
-        { icon: <FaFigma />, name: 'Figma' },
-        { icon: <FaReact />, name: 'React' },
-        { icon: <SiTailwindcss />, name: 'Tailwind' },
-      ],
-      github: 'https://github.com',
-      live: 'https://example.com',
-    },
-    {
-      id: 5,
-      category: 'web',
-      title: 'Task Management App',
-      description:
-        'Collaborative task management platform with real-time updates and team features',
-      image: 'https://via.placeholder.com/400x300/EC4899/ffffff?text=Task+Manager',
-      technologies: [
-        { icon: <FaReact />, name: 'React' },
-        { icon: <FaNodeJs />, name: 'Node.js' },
-        { icon: <SiMongodb />, name: 'MongoDB' },
-      ],
-      github: 'https://github.com',
-      live: 'https://example.com',
-    },
-    {
-      id: 6,
-      category: 'mobile',
-      title: 'Fitness Tracker',
-      description:
-        'Mobile app for tracking workouts, nutrition, and health metrics with AI recommendations',
-      image: 'https://via.placeholder.com/400x300/06B6D4/ffffff?text=Fitness+App',
-      technologies: [
-        { icon: <FaReact />, name: 'React Native' },
-        { icon: <SiFirebase />, name: 'Firebase' },
-        { icon: <FaPython />, name: 'Python' },
-      ],
-      github: 'https://github.com',
-      live: 'https://example.com',
-    },
-    {
-      id: 7,
-      category: 'web',
-      title: 'Social Media Platform',
-      description:
-        'Full-featured social platform with posts, comments, likes, and real-time messaging',
-      image: 'https://via.placeholder.com/400x300/3B82F6/ffffff?text=Social+Media',
-      technologies: [
-        { icon: <FaReact />, name: 'React' },
-        { icon: <FaNodeJs />, name: 'Node.js' },
-        { icon: <SiMongodb />, name: 'MongoDB' },
-        { icon: <SiTypescript />, name: 'TypeScript' },
-      ],
-      github: 'https://github.com',
-      live: 'https://example.com',
+      github: 'https://github.com/tanishraj',
+      live: 'https://www.tanishraj.vercel.app',
       featured: true,
     },
     {
-      id: 8,
-      category: 'design',
-      title: 'Brand Identity',
+      id: 4,
+      category: 'banking',
+      title: 'Customer Happiness Portal',
       description:
-        'Complete brand identity design including logo, color palette, and brand guidelines',
-      image: 'https://via.placeholder.com/400x300/DC2626/ffffff?text=Brand+Identity',
-      technologies: [{ icon: <FaFigma />, name: 'Figma' }],
-      github: 'https://github.com',
-      live: 'https://example.com',
+        'Legacy customer portal modernization, including self-service lost/stolen card workflows and maintainable component boundaries.',
+      image: 'https://via.placeholder.com/400x300/059669/ffffff?text=Customer+Portal',
+      technologies: [
+        { icon: <FaReact />, name: 'React' },
+        { icon: <SiTypescript />, name: 'TypeScript' },
+        { icon: <SiRedux />, name: 'Redux' },
+      ],
+      github: 'https://github.com/tanishraj',
+      live: 'https://www.tanishraj.vercel.app',
+    },
+    {
+      id: 5,
+      category: 'enterprise',
+      title: 'Enterprise Oil & Gas Applications',
+      description:
+        'Enterprise web applications built with Vue.js, Vuex, Kendo UI, secure coding practices, and SonarQube quality standards.',
+      image: 'https://via.placeholder.com/400x300/F59E0B/ffffff?text=Enterprise+Apps',
+      technologies: [
+        { icon: <SiVuedotjs />, name: 'Vue.js' },
+        { icon: <SiRedux />, name: 'Vuex' },
+        { icon: <SiJest />, name: 'Testing' },
+      ],
+      github: 'https://github.com/tanishraj',
+      live: 'https://www.tanishraj.vercel.app',
+    },
+    {
+      id: 6,
+      category: 'enterprise',
+      title: 'Reusable Design System Foundation',
+      description:
+        'Shared component patterns and UI foundations that improved consistency, accessibility, delivery speed, and maintainability.',
+      image: 'https://via.placeholder.com/400x300/DB2777/ffffff?text=Design+System',
+      technologies: [
+        { icon: <FaReact />, name: 'React' },
+        { icon: <SiTailwindcss />, name: 'Tailwind' },
+        { icon: <SiVite />, name: 'Vite' },
+      ],
+      github: 'https://github.com/tanishraj',
+      live: 'https://www.tanishraj.vercel.app',
     },
   ];
 
@@ -167,7 +150,8 @@ export const Portfolio: React.FC = () => {
             </span>
           </h2>
           <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-            Explore my latest work and creative solutions
+            Selected frontend work across fintech, banking, enterprise modernization, design
+            systems, and product delivery
           </p>
         </motion.div>
 
@@ -315,4 +299,3 @@ export const Portfolio: React.FC = () => {
     </section>
   );
 };
-

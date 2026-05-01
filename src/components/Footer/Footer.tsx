@@ -20,17 +20,18 @@ export const Footer: React.FC = () => {
                 Connect
               </span>
             </h3>
-            <p className="text-gray-400 mt-2 text-lg">
-              Feel free to reach out for collaborations or just a friendly hello
+            <p className="text-gray-400 mt-2 text-lg w-1/2 text-center mx-auto">
+              Reach out for senior frontend roles, React/TypeScript work, design systems, or
+              frontend modernization projects
             </p>
           </div>
 
           {/* Email */}
           <a
-            href="mailto:hello@example.com"
+            href="mailto:hire.tanishraj@gmail.com"
             className="text-xl text-blue-400 hover:text-blue-300 transition-colors inline-block"
           >
-            hello@example.com
+            hire.tanishraj@gmail.com
           </a>
 
           {/* Social Links */}
@@ -60,4 +61,3 @@ export const Footer: React.FC = () => {
     </footer>
   );
 };
-

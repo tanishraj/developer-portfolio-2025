@@ -27,22 +27,22 @@ export const Contact: React.FC = () => {
     {
       question: 'What services do you offer?',
       answer:
-        'I offer UI/UX design, web development, mobile app development, and product strategy consulting.',
+        'I focus on senior frontend engineering, React and TypeScript applications, design systems, legacy modernization, performance optimization, testing, and frontend architecture.',
     },
     {
       question: 'How long does a typical project take?',
       answer:
-        'Project timelines vary based on scope and complexity. A simple website might take 2-4 weeks, while a complex application could take 2-3 months.',
+        'Timelines depend on scope. I can support focused UI features, larger frontend migrations, or ongoing product delivery across cross-functional teams.',
     },
     {
       question: 'Do you work with international clients?',
       answer:
-        'Yes! I work with clients globally and am comfortable with remote collaboration across different time zones.',
+        'Yes. I am based in Abu Dhabi, UAE and have worked with distributed product, design, backend, QA, DevOps, and data teams.',
     },
     {
-      question: 'What is your pricing structure?',
+      question: 'What domains do you know best?',
       answer:
-        'I offer both fixed-price projects and hourly rates depending on the project requirements. Contact me for a custom quote.',
+        'My strongest domain experience is in banking, fintech, enterprise platforms, customer portals, mobile banking, and data-heavy decision-support interfaces.',
     },
   ];
 
@@ -166,8 +166,8 @@ export const Contact: React.FC = () => {
             </span>
           </h2>
           <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-            Have a project in mind? I'd love to hear about it. Send me a message and let's create
-            something amazing together.
+            Have a frontend role, product build, migration, or design system challenge in mind?
+            Send me a message and let's talk.
           </p>
         </motion.div>
 
@@ -424,30 +424,30 @@ export const Contact: React.FC = () => {
               <h5 className="text-lg font-semibold text-white mb-4">Quick Contact</h5>
               <div className="space-y-4">
                 <motion.a
-                  href="mailto:hello@example.com"
+                  href="mailto:hire.tanishraj@gmail.com"
                   whileHover={{ x: 5 }}
                   className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors"
                 >
                   <div className="p-2 bg-gray-800 rounded-lg">
                     <FaEnvelope className="text-blue-400" />
                   </div>
-                  <span>hello@example.com</span>
+                  <span>hire.tanishraj@gmail.com</span>
                 </motion.a>
                 <motion.a
-                  href="tel:+1234567890"
+                  href="tel:+971561338400"
                   whileHover={{ x: 5 }}
                   className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors"
                 >
                   <div className="p-2 bg-gray-800 rounded-lg">
                     <FaPhone className="text-green-400" />
                   </div>
-                  <span>+1 (234) 567-890</span>
+                  <span>+971 56 133 8400</span>
                 </motion.a>
                 <motion.div whileHover={{ x: 5 }} className="flex items-center gap-3 text-gray-400">
                   <div className="p-2 bg-gray-800 rounded-lg">
                     <FaMapMarkerAlt className="text-purple-400" />
                   </div>
-                  <span>San Francisco, CA</span>
+                  <span>Abu Dhabi, UAE</span>
                 </motion.div>
               </div>
             </motion.div>
@@ -457,4 +457,3 @@ export const Contact: React.FC = () => {
     </section>
   );
 };
-
