@@ -126,7 +126,7 @@ export const Navigation: React.FC = () => {
                       transition={{ 
                         type: 'tween',
                         duration: 0.3,
-                        ease: 'easeInOut'
+                        ease: 'easeInOut',
                       }}
                     />
                   )}

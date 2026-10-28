@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { JSEngineVisualizer } from '../../components/JSEngineVisualizer';
+import { SEO } from '../../components/SEO';
 
 const JSEngineVisualizerPage: React.FC = () => {
   useEffect(() => {
@@ -29,7 +30,14 @@ const JSEngineVisualizerPage: React.FC = () => {
     };
   }, []);
 
-  return <JSEngineVisualizer />;
+  return (
+    <>
+      <SEO
+        route="jsEngine"
+      />
+      <JSEngineVisualizer />
+    </>
+  );
 };
 
 export default JSEngineVisualizerPage;

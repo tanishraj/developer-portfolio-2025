@@ -44,7 +44,7 @@ export const Portfolio: React.FC = () => {
       title: 'Liquidity Capital Finance Platforms',
       description:
         'Data-heavy capital formation and private credit workflows built with React, TypeScript, Vite, Apollo Client, and GraphQL.',
-      image: '/assets/liquidity-platform.png',
+      image: '/assets/liquidity-platform.webp',
       technologies: [
         { icon: <FaReact />, name: 'React' },
         { icon: <SiTypescript />, name: 'TypeScript' },
@@ -60,7 +60,7 @@ export const Portfolio: React.FC = () => {
       title: 'AI Assistant & Lexical Editor Workflows',
       description:
         'Rich text and AI-assisted investment intelligence experiences for structured content creation and report-like outputs.',
-      image: '/assets/liquidity-ai-editor.png',
+      image: '/assets/liquidity-ai-editor.webp',
       technologies: [
         { icon: <FaReact />, name: 'React' },
         { icon: <SiTypescript />, name: 'TypeScript' },
@@ -76,7 +76,7 @@ export const Portfolio: React.FC = () => {
       title: 'Digital Banking Platforms',
       description:
         'Customer-facing banking web and mobile interfaces delivered with React, Next.js, TypeScript, and React Native.',
-      image: '/assets/digital-banking-platform.png',
+      image: '/assets/digital-banking-platform.webp',
       technologies: [
         { icon: <FaUniversity />, name: 'Banking' },
         { icon: <SiTypescript />, name: 'TypeScript' },
@@ -92,7 +92,7 @@ export const Portfolio: React.FC = () => {
       title: 'Barebones UI Library',
       description:
         'A reusable UI library and component foundation focused on clean patterns, consistent styling, and faster frontend delivery.',
-      image: '/assets/barebones-ui.png',
+      image: '/assets/barebones-ui.webp',
       technologies: [
         { icon: <FaReact />, name: 'React' },
         { icon: <SiTailwindcss />, name: 'Tailwind' },
@@ -108,7 +108,7 @@ export const Portfolio: React.FC = () => {
       title: 'Snake Game',
       description:
         'A playable browser snake game with responsive controls, score tracking, and polished React interactions.',
-      image: '/assets/snake-game.png',
+      image: '/assets/snake-game.webp',
       technologies: [
         { icon: <FaReact />, name: 'React' },
         { icon: <SiTypescript />, name: 'TypeScript' },
@@ -124,7 +124,7 @@ export const Portfolio: React.FC = () => {
       title: 'Typing Test',
       description:
         'A typing speed test experience for practicing accuracy, rhythm, and words-per-minute performance.',
-      image: '/assets/typing-test.png',
+      image: '/assets/typing-test.webp',
       technologies: [
         { icon: <FaReact />, name: 'React' },
         { icon: <SiTypescript />, name: 'TypeScript' },
@@ -140,7 +140,7 @@ export const Portfolio: React.FC = () => {
       title: 'Learn HTML Portal',
       description:
         'An interactive HTML learning portal that helps beginners understand tags, structure, and page-building fundamentals.',
-      image: '/assets/learn-html.png',
+      image: '/assets/learn-html.webp',
       technologies: [
         { icon: <FaHtml5 />, name: 'HTML5' },
         { icon: <FaReact />, name: 'React' },
@@ -247,6 +247,10 @@ export const Portfolio: React.FC = () => {
                   <img
                     src={project.image}
                     alt={project.title}
+                    width={960}
+                    height={720}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-60" />

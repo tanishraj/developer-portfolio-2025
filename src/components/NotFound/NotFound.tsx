@@ -1,29 +1,16 @@
 import { motion } from 'framer-motion';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+
+import { SEO } from '../SEO';
 
 export const NotFound: React.FC = () => {
-  const [countdown, setCountdown] = useState(10);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCountdown((prev) => {
-        if (prev <= 1) {
-          window.location.href = '/';
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
-
   const handleGoHome = () => {
     window.location.href = '/';
   };
 
   return (
     <section className="min-h-screen relative flex items-center justify-center px-4 overflow-hidden">
+      <SEO route="notFound" noIndex pathOverride={window.location.pathname} />
       {/* Animated gradient orbs */}
       <motion.div
         animate={{
@@ -158,25 +145,6 @@ export const NotFound: React.FC = () => {
           </motion.button>
         </motion.div>
 
-        {/* Auto-redirect countdown */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.5 }}
-          className="text-gray-500 text-sm"
-        >
-          Redirecting to home in{' '}
-          <motion.span
-            key={countdown}
-            initial={{ scale: 1.5, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            className="text-blue-400 font-semibold"
-          >
-            {countdown}
-          </motion.span>{' '}
-          seconds...
-        </motion.div>
-
         {/* Fun ASCII Art */}
         <motion.pre
           initial={{ opacity: 0 }}
@@ -227,4 +195,3 @@ export const NotFound: React.FC = () => {
     </section>
   );
 };
-

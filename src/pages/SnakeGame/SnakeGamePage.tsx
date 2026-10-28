@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { AnimatedBackground } from '../../components/AnimatedBackground';
 import { CustomCursor } from '../../components/CustomCursor';
+import { SEO } from '../../components/SEO';
 import { SnakeGame } from '../../components/SnakeGame';
 
 const SnakeGamePage: React.FC = () => {
@@ -14,6 +15,9 @@ const SnakeGamePage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#0a0f1b] text-white relative cursor-none">
+      <SEO
+        route="snake"
+      />
       <AnimatedBackground />
       <CustomCursor />
       <SnakeGame isOpen={true} onClose={handleClose} />
