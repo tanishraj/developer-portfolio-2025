@@ -31,7 +31,9 @@ A modern, interactive portfolio website built with React, TypeScript, and Tailwi
 Route metadata is maintained in `src/seo-metadata.json`. The production build creates static HTML
 entries for the homepage and each game route so crawlers can read each page's title, description,
 canonical URL, and social preview before running the app JavaScript. It also emits a no-index
-`404.html` page for Vercel to serve when a URL does not match a built route.
+`404.html` page for Vercel to serve when a URL does not match a built route. Set `REACT_APP_SITE_URL`
+in the deployment environment to use a custom canonical domain; the build applies it to route
+metadata, structured data, `robots.txt`, and the sitemap.
 
 ## Tech Stack
 

@@ -3,6 +3,7 @@ import { type FC, useEffect } from 'react';
 import seoMetadata from '../../seo-metadata.json';
 
 type RouteKey = keyof typeof seoMetadata.routes;
+const siteUrl = process.env.REACT_APP_SITE_URL || seoMetadata.siteUrl;
 
 interface SEOProps {
   route: RouteKey;
@@ -26,8 +27,8 @@ export const SEO: FC<SEOProps> = ({ route, noIndex = false, pathOverride }) => {
   const metadata = seoMetadata.routes[route];
 
   useEffect(() => {
-    const canonicalUrl = new URL(pathOverride ?? metadata.path, seoMetadata.siteUrl).toString();
-    const shareImageUrl = new URL(seoMetadata.shareImage, seoMetadata.siteUrl).toString();
+    const canonicalUrl = new URL(pathOverride ?? metadata.path, siteUrl).toString();
+    const shareImageUrl = new URL(seoMetadata.shareImage, siteUrl).toString();
     document.title = metadata.title;
     document.documentElement.lang = 'en';
 
