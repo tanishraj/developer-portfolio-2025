@@ -39,39 +39,32 @@ export const CustomCursor: React.FC = () => {
     const handleMouseEnter = () => setIsVisible(true);
     const handleMouseLeave = () => setIsVisible(false);
 
-    // Handle hover states for interactive elements
-    const handleElementHover = () => {
-      const addHoverListeners = (element: Element) => {
-        element.addEventListener('mouseenter', () => setCursorVariant('hover'));
-        element.addEventListener('mouseleave', () => setCursorVariant('default'));
-      };
+    const interactiveSelector = 'a, button, input, textarea, select, [role="button"]';
+    const isInteractive = (target: EventTarget | null) =>
+      target instanceof Element && target.closest(interactiveSelector) !== null;
 
-      // Add listeners to interactive elements
-      document.querySelectorAll('a, button, input, textarea, select, [role="button"]').forEach(addHoverListeners);
+    const handleMouseOver = (e: MouseEvent) => {
+      if (isInteractive(e.target)) setCursorVariant('hover');
+    };
+
+    const handleMouseOut = (e: MouseEvent) => {
+      if (isInteractive(e.target) && !isInteractive(e.relatedTarget)) {
+        setCursorVariant('default');
+      }
     };
 
     window.addEventListener('mousemove', moveCursor);
     document.addEventListener('mouseenter', handleMouseEnter);
     document.addEventListener('mouseleave', handleMouseLeave);
-    
-    // Set up hover listeners after a short delay to ensure DOM is ready
-    setTimeout(handleElementHover, 100);
-
-    // Re-apply listeners when DOM changes
-    const observer = new MutationObserver(() => {
-      setTimeout(handleElementHover, 100);
-    });
-    
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true,
-    });
+    document.addEventListener('mouseover', handleMouseOver);
+    document.addEventListener('mouseout', handleMouseOut);
 
     return () => {
       window.removeEventListener('mousemove', moveCursor);
       document.removeEventListener('mouseenter', handleMouseEnter);
       document.removeEventListener('mouseleave', handleMouseLeave);
-      observer.disconnect();
+      document.removeEventListener('mouseover', handleMouseOver);
+      document.removeEventListener('mouseout', handleMouseOut);
     };
   }, [isLargeScreen, cursorX, cursorY]);
 

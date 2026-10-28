@@ -1,64 +1,71 @@
-import { motion } from 'framer-motion';
-import React, { useEffect, useState } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import React, { useEffect } from 'react';
 
 export const AnimatedBackground: React.FC = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const mouseX = useMotionValue(window.innerWidth / 2);
+  const mouseY = useMotionValue(window.innerHeight / 2);
+  const mirroredMouseX = useMotionValue(window.innerWidth / 2 - 144);
+  const mirroredMouseY = useMotionValue(window.innerHeight / 2 - 144);
+
+  const primaryX = useSpring(useTransform(mouseX, (x) => x - 192), {
+    stiffness: 30,
+    damping: 20,
+  });
+  const primaryY = useSpring(useTransform(mouseY, (y) => y - 192), {
+    stiffness: 30,
+    damping: 20,
+  });
+  const secondaryX = useSpring(useTransform(mouseX, (x) => x - 160), {
+    stiffness: 20,
+    damping: 25,
+  });
+  const secondaryY = useSpring(useTransform(mouseY, (y) => y - 160), {
+    stiffness: 20,
+    damping: 25,
+  });
+  const tertiaryX = useSpring(mirroredMouseX, { stiffness: 15, damping: 30 });
+  const tertiaryY = useSpring(mirroredMouseY, { stiffness: 15, damping: 30 });
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: e.clientX,
-        y: e.clientY,
-      });
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
+      mirroredMouseX.set(window.innerWidth - e.clientX - 144);
+      mirroredMouseY.set(window.innerHeight - e.clientY - 144);
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+    const handleResize = () => {
+      mirroredMouseX.set(window.innerWidth - mouseX.get() - 144);
+      mirroredMouseY.set(window.innerHeight - mouseY.get() - 144);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    window.addEventListener('resize', handleResize, { passive: true });
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [mirroredMouseX, mirroredMouseY, mouseX, mouseY]);
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
       {/* Primary blob - follows mouse directly */}
       <motion.div
         className="absolute w-96 h-96 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full filter blur-[100px]"
-        animate={{
-          x: mousePosition.x - 192,
-          y: mousePosition.y - 192,
-        }}
-        transition={{
-          type: 'spring',
-          stiffness: 30,
-          damping: 20,
-        }}
+        style={{ x: primaryX, y: primaryY }}
       />
 
       {/* Secondary blob - follows with delay */}
       <motion.div
         className="absolute w-80 h-80 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full filter blur-[80px]"
-        animate={{
-          x: mousePosition.x - 160,
-          y: mousePosition.y - 160,
-        }}
-        transition={{
-          type: 'spring',
-          stiffness: 20,
-          damping: 25,
-          delay: 0.1,
-        }}
+        style={{ x: secondaryX, y: secondaryY }}
       />
 
       {/* Tertiary blob - opposite movement */}
       <motion.div
         className="absolute w-72 h-72 bg-gradient-to-r from-green-500/15 to-yellow-500/15 rounded-full filter blur-[90px]"
-        animate={{
-          x: window.innerWidth - mousePosition.x - 144,
-          y: window.innerHeight - mousePosition.y - 144,
-        }}
-        transition={{
-          type: 'spring',
-          stiffness: 15,
-          damping: 30,
-        }}
+        style={{ x: tertiaryX, y: tertiaryY }}
       />
 
       {/* Static animated blobs */}
