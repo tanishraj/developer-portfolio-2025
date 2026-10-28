@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+
 import { About } from '../About';
 import { AnimatedBackground } from '../AnimatedBackground';
 import { Contact } from '../Contact';
@@ -8,6 +9,7 @@ import { GameButton } from '../GameButton';
 import { Hero } from '../Hero';
 import { Navigation } from '../Navigation';
 import { Portfolio } from '../Portfolio';
+import { SEO } from '../SEO';
 import { Services } from '../Services';
 import { Skills } from '../Skills';
 import { VoiceCommand } from '../VoiceCommand';
@@ -25,6 +27,11 @@ export function HomePage() {
 
   return (
     <div className="min-h-screen bg-[#0a0f1b] text-white relative cursor-none">
+      <SEO
+        title="Tanish Raj | Senior Frontend Engineer in Abu Dhabi"
+        description="Senior Frontend Engineer with nearly 10 years of experience building scalable React, TypeScript, fintech, and enterprise products. Based in Abu Dhabi, UAE."
+        path="/"
+      />
       {/* Fixed background layers that stay consistent across all sections */}
       <div className="fixed inset-0">
         {/* Base gradient background */}

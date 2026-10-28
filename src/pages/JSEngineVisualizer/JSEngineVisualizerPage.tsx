@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { JSEngineVisualizer } from '../../components/JSEngineVisualizer';
+import { SEO } from '../../components/SEO';
 
 const JSEngineVisualizerPage: React.FC = () => {
   useEffect(() => {
@@ -29,7 +30,16 @@ const JSEngineVisualizerPage: React.FC = () => {
     };
   }, []);
 
-  return <JSEngineVisualizer />;
+  return (
+    <>
+      <SEO
+        title="JavaScript Engine Visualizer | Tanish Raj"
+        description="Explore a visual JavaScript execution walkthrough with call stack, memory heap, task queues, and event loop."
+        path="/games/js-engine"
+      />
+      <JSEngineVisualizer />
+    </>
+  );
 };
 
 export default JSEngineVisualizerPage;

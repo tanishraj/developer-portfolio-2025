@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 
+import { SEO } from '../SEO';
+
 export const NotFound: React.FC = () => {
   const [countdown, setCountdown] = useState(10);
 
@@ -24,6 +26,12 @@ export const NotFound: React.FC = () => {
 
   return (
     <section className="min-h-screen relative flex items-center justify-center px-4 overflow-hidden">
+      <SEO
+        title="Page Not Found | Tanish Raj"
+        description="This page could not be found."
+        path={window.location.pathname}
+        noIndex
+      />
       {/* Animated gradient orbs */}
       <motion.div
         animate={{
