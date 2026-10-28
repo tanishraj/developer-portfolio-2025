@@ -16,9 +16,7 @@ const ReactionTestPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#0a0f1b] text-white relative cursor-none">
       <SEO
-        title="Reaction Time Test | Tanish Raj"
-        description="Measure your reaction time with a quick interactive browser test by Tanish Raj."
-        path="/games/reaction"
+        route="reaction"
       />
       <AnimatedBackground />
       <CustomCursor />

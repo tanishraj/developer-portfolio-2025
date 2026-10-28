@@ -28,9 +28,7 @@ export function HomePage() {
   return (
     <div className="min-h-screen bg-[#0a0f1b] text-white relative cursor-none">
       <SEO
-        title="Tanish Raj | Senior Frontend Engineer in Abu Dhabi"
-        description="Senior Frontend Engineer with nearly 10 years of experience building scalable React, TypeScript, fintech, and enterprise products. Based in Abu Dhabi, UAE."
-        path="/"
+        route="home"
       />
       {/* Fixed background layers that stay consistent across all sections */}
       <div className="fixed inset-0">

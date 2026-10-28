@@ -27,10 +27,9 @@ export const NotFound: React.FC = () => {
   return (
     <section className="min-h-screen relative flex items-center justify-center px-4 overflow-hidden">
       <SEO
-        title="Page Not Found | Tanish Raj"
-        description="This page could not be found."
-        path={window.location.pathname}
+        route="notFound"
         noIndex
+        pathOverride={window.location.pathname}
       />
       {/* Animated gradient orbs */}
       <motion.div

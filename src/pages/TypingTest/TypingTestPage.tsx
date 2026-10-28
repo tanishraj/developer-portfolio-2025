@@ -16,9 +16,7 @@ const TypingTestPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#0a0f1b] text-white relative cursor-none">
       <SEO
-        title="Typing Speed Test | Tanish Raj"
-        description="Take an interactive typing speed test with code snippets, accuracy tracking, and saved results."
-        path="/games/typing"
+        route="typing"
       />
       <AnimatedBackground />
       <CustomCursor />

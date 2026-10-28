@@ -26,6 +26,12 @@ A modern, interactive portfolio website built with React, TypeScript, and Tailwi
 - **Reaction Test** - Reaction time measurement game
 - **JS Engine Visualizer** - JavaScript engine visualization tool
 
+## SEO
+
+Route metadata is maintained in `src/seo-metadata.json`. The production build creates static HTML
+entries for the homepage and each game route so crawlers can read each page's title, description,
+canonical URL, and social preview before running the app JavaScript.
+
 ## Tech Stack
 
 ### Frontend Framework

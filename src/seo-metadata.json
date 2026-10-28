@@ -1,0 +1,36 @@
+{
+  "siteUrl": "https://hire-tanishraj.vercel.app",
+  "shareImage": "/og-portfolio.jpg",
+  "routes": {
+    "home": {
+      "path": "/",
+      "title": "Tanish Raj | Senior Frontend Engineer in Abu Dhabi",
+      "description": "Senior Frontend Engineer with nearly 10 years of experience building scalable React, TypeScript, fintech, and enterprise products. Based in Abu Dhabi, UAE."
+    },
+    "snake": {
+      "path": "/games/snake",
+      "title": "Snake Game | Tanish Raj",
+      "description": "Play the classic Snake game in this interactive browser game by Tanish Raj."
+    },
+    "typing": {
+      "path": "/games/typing",
+      "title": "Typing Speed Test | Tanish Raj",
+      "description": "Take an interactive typing speed test with code snippets, accuracy tracking, and saved results."
+    },
+    "reaction": {
+      "path": "/games/reaction",
+      "title": "Reaction Time Test | Tanish Raj",
+      "description": "Measure your reaction time with a quick interactive browser test by Tanish Raj."
+    },
+    "jsEngine": {
+      "path": "/games/js-engine",
+      "title": "JavaScript Engine Visualizer | Tanish Raj",
+      "description": "Explore a visual JavaScript execution walkthrough with call stack, memory heap, task queues, and event loop."
+    },
+    "notFound": {
+      "path": "/404",
+      "title": "Page Not Found | Tanish Raj",
+      "description": "This page could not be found."
+    }
+  }
+}

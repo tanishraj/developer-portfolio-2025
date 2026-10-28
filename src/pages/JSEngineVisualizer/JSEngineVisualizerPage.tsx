@@ -33,9 +33,7 @@ const JSEngineVisualizerPage: React.FC = () => {
   return (
     <>
       <SEO
-        title="JavaScript Engine Visualizer | Tanish Raj"
-        description="Explore a visual JavaScript execution walkthrough with call stack, memory heap, task queues, and event loop."
-        path="/games/js-engine"
+        route="jsEngine"
       />
       <JSEngineVisualizer />
     </>
