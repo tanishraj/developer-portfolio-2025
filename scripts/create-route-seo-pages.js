@@ -35,16 +35,20 @@ const setCanonical = (html, canonicalUrl) => {
   return html.replace(/<head[^>]*>/i, (head) => `${head}${tag}`);
 };
 
-const createRouteHtml = (template, metadata) => {
+const createRouteHtml = (template, metadata, { noIndex = false, canonical = true } = {}) => {
   const canonicalUrl = new URL(metadata.path, seoMetadata.siteUrl).toString();
   const shareImageUrl = new URL(seoMetadata.shareImage, seoMetadata.siteUrl).toString();
   let html = template.replace(/<title>[^<]*<\/title>/i, `<title>${metadata.title}</title>`);
 
   html = setMeta(html, 'name', 'description', metadata.description);
-  html = setMeta(html, 'name', 'robots', 'index,follow,max-image-preview:large');
+  html = setMeta(
+    html,
+    'name',
+    'robots',
+    noIndex ? 'noindex,follow' : 'index,follow,max-image-preview:large'
+  );
   html = setMeta(html, 'property', 'og:title', metadata.title);
   html = setMeta(html, 'property', 'og:description', metadata.description);
-  html = setMeta(html, 'property', 'og:url', canonicalUrl);
   html = setMeta(html, 'property', 'og:image', shareImageUrl);
   html = setMeta(html, 'property', 'og:image:width', '1200');
   html = setMeta(html, 'property', 'og:image:height', '630');
@@ -52,7 +56,15 @@ const createRouteHtml = (template, metadata) => {
   html = setMeta(html, 'name', 'twitter:title', metadata.title);
   html = setMeta(html, 'name', 'twitter:description', metadata.description);
   html = setMeta(html, 'name', 'twitter:image', shareImageUrl);
-  html = setCanonical(html, canonicalUrl);
+
+  if (canonical) {
+    html = setMeta(html, 'property', 'og:url', canonicalUrl);
+    html = setCanonical(html, canonicalUrl);
+  } else {
+    html = html.replace(/<link\b(?=[^>]*\brel="canonical")[^>]*>/i, '');
+    html = html.replace(/<meta\b(?=[^>]*\bproperty="og:url")[^>]*>/i, '');
+    html = html.replace(/<script\s+type="application\/ld\+json">[\s\S]*?<\/script>/i, '');
+  }
 
   return html;
 };
@@ -74,3 +86,10 @@ Object.values(seoMetadata.routes)
     fs.writeFileSync(routeFile, html);
     console.log(`Created route metadata page: ${metadata.path}`);
   });
+
+const notFoundHtml = createRouteHtml(template, seoMetadata.routes.notFound, {
+  noIndex: true,
+  canonical: false,
+});
+fs.writeFileSync(path.join(buildDirectory, '404.html'), notFoundHtml);
+console.log('Created static 404 page: /404.html');

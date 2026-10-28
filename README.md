@@ -30,7 +30,8 @@ A modern, interactive portfolio website built with React, TypeScript, and Tailwi
 
 Route metadata is maintained in `src/seo-metadata.json`. The production build creates static HTML
 entries for the homepage and each game route so crawlers can read each page's title, description,
-canonical URL, and social preview before running the app JavaScript.
+canonical URL, and social preview before running the app JavaScript. It also emits a no-index
+`404.html` page for Vercel to serve when a URL does not match a built route.
 
 ## Tech Stack
 

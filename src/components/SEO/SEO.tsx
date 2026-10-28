@@ -10,13 +10,8 @@ interface SEOProps {
   pathOverride?: string;
 }
 
-const setMeta = (
-  selector: string,
-  attribute: 'name' | 'property',
-  key: string,
-  content: string
-) => {
-  let element = document.head.querySelector<HTMLMetaElement>(selector);
+const setMeta = (attribute: 'name' | 'property', key: string, content: string) => {
+  let element = document.head.querySelector<HTMLMetaElement>(`meta[${attribute}="${key}"]`);
 
   if (!element) {
     element = document.createElement('meta');
@@ -36,33 +31,29 @@ export const SEO: FC<SEOProps> = ({ route, noIndex = false, pathOverride }) => {
     document.title = metadata.title;
     document.documentElement.lang = 'en';
 
-    setMeta('meta[name="description"]', 'name', 'description', metadata.description);
-    setMeta(
-      'meta[name="robots"]',
-      'name',
-      'robots',
-      noIndex ? 'noindex,follow' : 'index,follow,max-image-preview:large'
-    );
-    setMeta('meta[property="og:title"]', 'property', 'og:title', metadata.title);
-    setMeta('meta[property="og:description"]', 'property', 'og:description', metadata.description);
-    setMeta('meta[property="og:url"]', 'property', 'og:url', canonicalUrl);
-    setMeta('meta[property="og:image"]', 'property', 'og:image', shareImageUrl);
-    setMeta('meta[name="twitter:title"]', 'name', 'twitter:title', metadata.title);
-    setMeta(
-      'meta[name="twitter:description"]',
-      'name',
-      'twitter:description',
-      metadata.description
-    );
-    setMeta('meta[name="twitter:image"]', 'name', 'twitter:image', shareImageUrl);
+    setMeta('name', 'description', metadata.description);
+    setMeta('name', 'robots', noIndex ? 'noindex,follow' : 'index,follow,max-image-preview:large');
+    setMeta('property', 'og:title', metadata.title);
+    setMeta('property', 'og:description', metadata.description);
+    setMeta('property', 'og:image', shareImageUrl);
+    setMeta('name', 'twitter:title', metadata.title);
+    setMeta('name', 'twitter:description', metadata.description);
+    setMeta('name', 'twitter:image', shareImageUrl);
 
-    let canonical = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.rel = 'canonical';
-      document.head.appendChild(canonical);
+    if (noIndex) {
+      document.head.querySelector('link[rel="canonical"]')?.remove();
+      document.head.querySelector('meta[property="og:url"]')?.remove();
+    } else {
+      setMeta('property', 'og:url', canonicalUrl);
+
+      let canonical = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+      if (!canonical) {
+        canonical = document.createElement('link');
+        canonical.rel = 'canonical';
+        document.head.appendChild(canonical);
+      }
+      canonical.href = canonicalUrl;
     }
-    canonical.href = canonicalUrl;
   }, [metadata, noIndex, pathOverride]);
 
   return null;
